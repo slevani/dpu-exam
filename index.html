@@ -181,7 +181,7 @@ body{background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
   <div class="sec">Student Login</div>
   <div class="fld"><label>Full Name</label><input id="in" type="text" placeholder="Enter your full name…" autocomplete="off"></div>
   <div class="fld"><label>Student ID</label><input id="ii" type="text" placeholder="Enter your student ID…" autocomplete="off"></div>
-  <button class="btn-go" id="btn-go">Begin Exam →</button>
+  <button class="btn-go" onclick="go()">Begin Exam →</button>
   <div class="rules"><h4>📋 Instructions</h4><ul>
     <li>Do not close or refresh the browser during the exam</li>
     <li>Timer auto-submits when time expires</li>
@@ -239,7 +239,7 @@ body{background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
     </div>
   </div>
 </div>
-<div class="subbar"><div class="ac">Answered: <em id="an">0</em> / 30</div><button class="btn-sub" id="btn-sub">Submit Exam ✓</button></div>
+<div class="subbar"><div class="ac">Answered: <em id="an">0</em> / 30</div><button class="btn-sub" onclick="sub(false)">Submit Exam ✓</button></div>
 </div>
 
 <div id="sr" class="scr">
@@ -316,35 +316,6 @@ var sDragging={qi:-1,si:-1};
 
 // ── SCREENS ────────────────────────────────────────────────────────────────
 
-function setupHandlers(){
-  var btnGo = document.getElementById('btn-go');
-  if(btnGo) btnGo.addEventListener('click', go);
-
-  var btnSub = document.getElementById('btn-sub');
-  if(btnSub) btnSub.addEventListener('click', function(){ sub(false); });
-
-  var da = document.getElementById('drop-area-btn');
-  if(da) da.addEventListener('click', function(){ var pi=document.getElementById('pkt-input');if(pi)pi.click(); });
-
-  var cf = document.getElementById('clear-file-btn');
-  if(cf) cf.addEventListener('click', clearFile);
-
-  document.addEventListener('click', function(e){
-    var t = e.target;
-    var opt = t.closest ? t.closest('.opt[data-qi]') : null;
-    if(opt && opt.dataset){ pick(parseInt(opt.dataset.qi), parseInt(opt.dataset.oi)); return; }
-    var hz = t.classList && t.classList.contains('hz') ? t : (t.closest ? t.closest('.hz') : null);
-    if(hz && hz.dataset && hz.dataset.qi !== undefined){ pickHS(parseInt(hz.dataset.qi), hz.dataset.zid); return; }
-    var rm = t.classList && t.classList.contains('dzrm') ? t : (t.closest ? t.closest('.dzrm') : null);
-    if(rm && rm.dataset && rm.dataset.qi !== undefined){ rmD(parseInt(rm.dataset.qi), parseInt(rm.dataset.pi), rm.dataset.lbl); return; }
-  });
-}
-
-if(document.readyState === 'loading'){
-  document.addEventListener('DOMContentLoaded', setupHandlers);
-} else {
-  setupHandlers();
-}
 
 
 function show(id){
@@ -433,307 +404,25 @@ function body(q,i){
 // MCQ
 function mkO(q,i){
   var m=q.a.length>1;
-  var html=m?'<div class="cnote">Choose '+q.a.length+' correct answers</div>':'';
-  html+='<div class="opts">';
+  var h=m?'<div class="cnote">Choose '+q.a.length+' correct answers</div>':'';
+  h+='<div class="opts">';
   q.o.forEach(function(o,j){
-    html+='<label class="opt" id="op'+i+'_'+j+'" data-qi="'+i+'" data-oi="'+j+'">'+
+    h+='<label class="opt" id="op'+i+'_'+j+'" onclick="pick('+i+','+j+')">'+
       '<input type="'+(m?'checkbox':'radio')+'" name="q'+i+'" value="'+j+'">'+
       '<span class="ol">'+String.fromCharCode(97+j)+'.</span>'+
       '<span class="ot">'+o+'</span></label>';
   });
-  html+='</div>';
-  return html;
+  h+='</div>';
+  return h;
 }
 
-// Hotspot
-function mkHS(q,i){
-  var zones='';
-  q.z.forEach(function(z){
-    zones+='<rect class="hz" id="hz'+i+'_'+z.id+'"'+
-      ' data-qi="'+i+'" data-zid="'+z.id+'"'+
-      ' x="'+z.x+'" y="'+z.y+'" width="'+z.w+'" height="'+z.h+'"'+
-      ' fill="rgba(37,99,235,0)" stroke="rgba(37,99,235,.18)" stroke-width="1.8" rx="4"'+
-      ' style="cursor:pointer"/>';
-  });
-  var svgStr=(SVG[q.s]||'').replace('</svg>',zones+'</svg>');
-  return '<div class="hintbox">Click on the correct zone in the diagram</div>'+
-    '<div class="sva">'+svgStr+'</div>'+
-    '<div class="hsfb" id="hf'+i+'"></div>';
-}
-
-// Match
-function mkM(q,i){
-  return '<div class="mwrap">'+
-    '<div><div class="mcolt">Drag These</div><div id="ml'+i+'"></div></div>'+
-    '<div><div class="mcolt">Drop Here</div><div id="mr'+i+'"></div></div>'+
-    '</div>';
-}
-
-function setupMatch(i,q){
-  var L=document.getElementById('ml'+i);
-  var R=document.getElementById('mr'+i);
-  if(!L||!R) return;
-  var sh=q.p.slice().sort(function(){return Math.random()-0.5;});
-  sh.forEach(function(p){
-    var d=document.createElement('div');
-    d.className='ditem';
-    d.draggable=true;
-    d.textContent=p.r;
-    d.addEventListener('dragstart',function(e){_dv=p.r;d.classList.add('dragging');});
-    d.addEventListener('dragend',function(){d.classList.remove('dragging');});
-    L.appendChild(d);
-  });
-  q.p.forEach(function(p,pi){
-    var z=document.createElement('div');
-    z.className='dzone';
-    z.id='dz'+i+'_'+pi;
-    z.innerHTML='<span class="dzlbl">'+p.l+'</span><span class="dzph">Drop here...</span>';
-    z.addEventListener('dragover',function(e){e.preventDefault();z.classList.add('over');});
-    z.addEventListener('dragleave',function(){z.classList.remove('over');});
-    z.addEventListener('drop',function(e){e.preventDefault();dd(e,i,pi,p.l);});
-    R.appendChild(z);
-  });
-}
-
-// Sequence
-function mkS(q,i){
-  var html='<div class="cnote">Drag steps into the correct order</div><div class="seqwrap" id="sw'+i+'">';
-  q.steps.forEach(function(s,si){
-    html+='<div class="sitem" draggable="true" id="si'+i+'_'+si+'">'+
-      '<span class="snum">'+(si+1)+'</span>'+s+
-      '<span class="shint">drag</span></div>';
-  });
-  html+='</div>';
-  return html;
-}
-
-function initSeq(i){
-  A[i]=null;
-  var wrap=document.getElementById('sw'+i);
-  if(!wrap) return;
-  Array.from(wrap.children).forEach(function(el,si){
-    el.addEventListener('dragstart',function(){sDragging={qi:i,si:si};el.classList.add('dragging');});
-    el.addEventListener('dragend',function(){el.classList.remove('dragging');});
-    el.addEventListener('dragover',function(e){e.preventDefault();});
-    el.addEventListener('drop',function(e){e.preventDefault();seqDrop(i,si);});
-  });
-}
-
-function seqDrop(qi,to){
-  var from=sDragging.si;
-  if(sDragging.qi!==qi||from===to) return;
-  var wrap=document.getElementById('sw'+qi);
-  var items=Array.from(wrap.children);
-  var el=items[from];
-  if(from<to) wrap.insertBefore(el,items[to].nextSibling);
-  else wrap.insertBefore(el,items[to]);
-  Array.from(wrap.children).forEach(function(c,i2){
-    c.querySelector('.snum').textContent=i2+1;
-  });
-  A[qi]=Array.from(wrap.children).map(function(c){return parseInt(c.id.split('_')[1]);});
-  markDone(qi);
-}
-
-// PKT upload
-function mkPKT(q,i){
-  return '<div class="pkt-hint">Complete this task in Cisco Packet Tracer, save your file, then upload the .pkt file below.</div>'+
-    '<div id="pd-'+i+'" class="pkt-drop">'+
-    '<div style="font-size:1.8rem;margin-bottom:.4rem">&#128194;</div>'+
-    '<div class="pkt-drop-text">Drag &amp; drop your <b>.pkt</b> file here, or <span class="pkt-browse">click to browse</span></div>'+
-    '<div class="pkt-label">'+q.uploadLabel+'</div>'+
-    '</div>'+
-    '<input type="file" id="pf-'+i+'" accept=".pkt" style="display:none">'+
-    '<div id="ps-'+i+'" class="pkt-status"></div>';
-}
-
-function setupPKT(i){
-  var drop=document.getElementById('pd-'+i);
-  var inp=document.getElementById('pf-'+i);
-  if(!drop||!inp) return;
-  drop.addEventListener('click',function(){inp.click();});
-  drop.addEventListener('dragover',function(e){e.preventDefault();drop.style.borderColor='#2563eb';drop.style.background='#eff6ff';});
-  drop.addEventListener('dragleave',function(){drop.style.borderColor='#cbd5e1';drop.style.background='#f8fafc';});
-  drop.addEventListener('drop',function(e){e.preventDefault();drop.style.borderColor='#cbd5e1';drop.style.background='#f8fafc';pktSel(i,e.dataTransfer.files[0]);});
-  inp.addEventListener('change',function(){pktSel(i,inp.files[0]);});
-}
-
-function pktSel(i,f){
-  if(!f) return;
-  if(!f.name.endsWith('.pkt')){document.getElementById('ps-'+i).textContent='Please select a .pkt file only.';return;}
-  pktFiles[i]=f;
-  document.getElementById('ps-'+i).innerHTML='<span style="color:#059669;font-weight:600">&#10003; '+f.name+' ready to upload</span>';
-  document.getElementById('pd-'+i).style.borderColor='#86efac';
-  document.getElementById('pd-'+i).style.background='#f0fdf4';
-  A[i]='uploaded';
-  markDone(i);
-}
-
-// ── INTERACTION ────────────────────────────────────────────────────────────
-function pick(qi,oi){
-  var q=QS[qi], m=q.a.length>1;
-  if(m){
-    var ch=[];
-    document.querySelectorAll('input[name="q'+qi+'"]:checked').forEach(function(e){ch.push(parseInt(e.value));});
-    A[qi]=ch;
-    q.o.forEach(function(_,j){
-      var el=document.getElementById('op'+qi+'_'+j);
-      if(el) el.classList.toggle('sel',ch.indexOf(j)>=0);
-    });
-  } else {
-    A[qi]=[oi];
-    q.o.forEach(function(_,j){
-      var el=document.getElementById('op'+qi+'_'+j);
-      if(el) el.classList.toggle('sel',j===oi);
-    });
+document.addEventListener('click', function(e){
+  var t = e.target;
+  if(t.classList && t.classList.contains('hz') && t.dataset.qi!==undefined){
+    pickHS(parseInt(t.dataset.qi), t.dataset.zid);
   }
-  markDone(qi);
-}
-
-function pickHS(qi,zid){
-  QS[qi].z.forEach(function(z){
-    var el=document.getElementById('hz'+qi+'_'+z.id);
-    if(el){el.setAttribute('fill','rgba(37,99,235,0)');el.setAttribute('stroke','rgba(37,99,235,.18)');}
-  });
-  var sel=document.getElementById('hz'+qi+'_'+zid);
-  if(sel){sel.setAttribute('fill','rgba(37,99,235,.28)');sel.setAttribute('stroke','#2563eb');sel.setAttribute('stroke-width','2.5');}
-  A[qi]=[zid];
-  var f=document.getElementById('hf'+qi);
-  if(f) f.textContent='Zone '+zid+' selected';
-  markDone(qi);
-}
-
-function dd(e,qi,pi,label){
-  var dz=document.getElementById('dz'+qi+'_'+pi);
-  if(!dz) return;
-  dz.classList.remove('over');
-  dz.classList.add('fill');
-  dz.innerHTML='<span class="dzlbl">'+label+'</span>'+'<span style="font-size:.84rem;color:#065f46;font-weight:600">'+_dv+'</span>'+'<button class="dzrm" data-qi="'+qi+'" data-pi="'+pi+'" data-lbl="'+label+'">x</button>';
-  if(!Array.isArray(A[qi])) A[qi]=new Array(QS[qi].p.length).fill(null);
-  A[qi][pi]=_dv;
-  if(A[qi].every(function(v){return v!==null;})) markDone(qi);
-}
-
-function rmD(qi,pi,label){
-  var dz=document.getElementById('dz'+qi+'_'+pi);
-  if(!dz) return;
-  dz.classList.remove('fill');
-  dz.innerHTML='<span class="dzlbl">'+label+'</span><span class="dzph">Drop here...</span>';
-  if(Array.isArray(A[qi])) A[qi][pi]=null;
-  document.getElementById('qc'+qi).classList.remove('done');
-  document.getElementById('qn'+qi).classList.remove('ok');
-  prog();
-}
-
-function markDone(qi){
-  var qc=document.getElementById('qc'+qi);
-  var qn=document.getElementById('qn'+qi);
-  if(qc) qc.classList.add('done');
-  if(qn) qn.classList.add('ok');
-  prog();
-}
-
-function prog(){
-  var n=A.filter(function(a){return a!==null&&(Array.isArray(a)?a.length>0:true);}).length;
-  var pf=document.getElementById('pf');
-  var pt=document.getElementById('pt');
-  var an=document.getElementById('an');
-  if(pf) pf.style.width=(n/QS.length*100)+'%';
-  if(pt) pt.textContent=n+' / '+QS.length;
-  if(an) an.textContent=n;
-}
-
-// ── TIMER ──────────────────────────────────────────────────────────────────
-function tick(){
-  var d=document.getElementById('tm');
-  tInt=setInterval(function(){
-    tSec--;
-    var h=Math.floor(tSec/3600), m=Math.floor((tSec%3600)/60), s=tSec%60;
-    if(d) d.textContent=h+':'+String(m).padStart(2,'0')+':'+String(s).padStart(2,'0');
-    if(d){
-      d.classList.toggle('warn',tSec<=600&&tSec>180);
-      d.classList.toggle('danger',tSec<=180);
-    }
-    if(tSec<=0){clearInterval(tInt);sub(true);}
-  },1000);
-}
-
-// ── GRADING ────────────────────────────────────────────────────────────────
-function grade(q,a){
-  if(a===null) return false;
-  if(q.t==='mcq'||q.t==='visual'){
-    var x=Array.isArray(a)?a:[a];
-    return q.a.length===x.length&&q.a.every(function(c){return x.indexOf(c)>=0;});
+  if(t.classList && t.classList.contains('dzrm') && t.dataset.qi!==undefined){
+    rmD(parseInt(t.dataset.qi), parseInt(t.dataset.pi), t.dataset.lbl);
   }
-  if(q.t==='hotspot'){
-    var ok=q.z.filter(function(z){return z.ok;})[0];
-    return Array.isArray(a)&&a[0]===(ok?ok.id:null);
-  }
-  if(q.t==='match'){
-    return Array.isArray(a)&&q.p.every(function(p,i){return a[i]===p.r;});
-  }
-  if(q.t==='seq'){
-    return Array.isArray(a)&&a.every(function(v,i){return v===q.correct[i];});
-  }
-  if(q.t==='pkt') return a==='uploaded';
-  return false;
-}
-
-// ── SUBMIT ─────────────────────────────────────────────────────────────────
-function sub(auto){
-  if(submitted) return;
-  var n=A.filter(function(a){return a!==null;}).length;
-  if(!auto&&n<QS.length){
-    if(!confirm('You answered '+n+' of '+QS.length+' questions. Submit anyway?')) return;
-  }
-  submitted=true;
-  clearInterval(tInt);
-  document.querySelectorAll('input').forEach(function(el){el.disabled=true;});
-  var btn=document.querySelector('.btn-sub');
-  if(btn) btn.disabled=true;
-  showResult(Math.round((Date.now()-t0)/1000));
-}
-
-async function showResult(elapsed){
-  var c=0,w=0,sk=0;
-  var det=[];
-  QS.forEach(function(q,i){
-    var a=A[i];
-    if(a===null||(Array.isArray(a)&&a.length===0)){sk++;det.push('Skipped');}
-    else if(grade(q,a)){c++;det.push('Correct');}
-    else{w++;det.push('Wrong');}
-  });
-  var score=Math.round((c/QS.length)*100);
-  var em=Math.floor(elapsed/60), es=elapsed%60;
-  var gl=score>=90?'A+':score>=80?'A':score>=70?'B':score>=60?'C':'F';
-
-  show('sr');
-  var si=document.getElementById('sub-info');
-  var ss=document.getElementById('sub-status');
-  if(si) si.textContent='Name: '+sN+' | ID: '+sI;
-  if(ss) ss.textContent='Saving...';
-
-  var payload={name:sN,id:sI,score:score,grade:gl,correct:c,wrong:w,skipped:sk,timeUsed:em+'m '+es+'s'};
-  
-  // Send to Formspree — teacher receives results by email
-  try{
-    var fd=new FormData();
-    fd.append('name', sN);
-    fd.append('id', sI);
-    fd.append('score', score+'%');
-    fd.append('grade', gl);
-    fd.append('correct', c+' / '+QS.length);
-    fd.append('time', em+'m '+es+'s');
-    fd.append('_subject', 'Exam Result: '+sN+' — '+score+'%');
-    // Attach PKT files
-    var keys=Object.keys(pktFiles);
-    keys.forEach(function(idx){
-      fd.append('pkt_'+QS[idx].b, pktFiles[idx]);
-    });
-    var r=await fetch('https://formspree.io/f/xpqnzpww',{method:'POST',body:fd,headers:{Accept:'application/json'}});
-    var j=await r.json();
-    if(ss) ss.textContent=j.ok?'Submitted to instructor.':'Submitted (check with instructor).';
-  }catch(err){
-    if(ss) ss.textContent='Submitted. Inform instructor if you have issues.';
-  }
-}
+});
 >
