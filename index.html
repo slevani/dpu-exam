@@ -13,16 +13,15 @@ body{background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 @keyframes blink{50%{opacity:.4}}
 .hdr{background:linear-gradient(135deg,#1e3a8a,#2563eb);padding:.9rem 2rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 2px 10px rgba(30,58,138,.35)}
 .hdr-logo{display:flex;align-items:center;gap:14px}
-.emblem{width:52px;height:52px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0;box-shadow:0 2px 6px rgba(0,0,0,.2)}
-.emblem .e1{font-size:.78rem;font-weight:900;color:#1e3a8a;letter-spacing:.04em}
-.emblem .e2{font-size:.55rem;color:#d97706;margin-top:1px}
+.emb{width:52px;height:52px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;flex-shrink:0}
+.emb .e1{font-size:.78rem;font-weight:900;color:#1e3a8a}
+.emb .e2{font-size:.55rem;color:#d97706}
 .hdr-text .h1{font-size:.95rem;font-weight:700;color:#fff}
 .hdr-text .h2{font-size:.68rem;color:#bfdbfe;margin-top:2px}
 .hdr-right{text-align:right}
 .hdr-right .r1{font-size:.85rem;font-weight:700;color:#fff}
 .hdr-right .r2{font-size:.68rem;color:#93c5fd;margin-top:2px}
-#sl{background:#f1f5f9;align-items:center;justify-content:flex-start;padding-bottom:2rem}
-.lcard{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:2.5rem;width:100%;max-width:550px;margin:2rem auto;box-shadow:0 4px 6px rgba(0,0,0,.06);animation:up .4s ease}
+.lcard{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:2.5rem;width:100%;max-width:520px;margin:2rem auto;box-shadow:0 4px 6px rgba(0,0,0,.06);animation:up .4s ease}
 .igrid{display:grid;grid-template-columns:repeat(2,1fr);gap:.8rem;margin-bottom:1.8rem}
 .ibox{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:.9rem;text-align:center}
 .ival{font-size:1.2rem;font-weight:700;color:#1e3a8a;font-family:monospace}
@@ -31,31 +30,28 @@ body{background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .sec::before,.sec::after{content:'';flex:1;height:1px;background:#e2e8f0}
 .fld{margin-bottom:1rem}
 .fld label{display:block;font-size:.72rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.08em;margin-bottom:.4rem}
-.fld input{width:100%;padding:.8rem 1rem;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.95rem;outline:none;background:#fff;transition:border-color .2s,box-shadow .2s}
+.fld input{width:100%;padding:.8rem 1rem;border:1.5px solid #e2e8f0;border-radius:8px;font-size:.95rem;outline:none}
 .fld input:focus{border-color:#2563eb;box-shadow:0 0 0 3px rgba(37,99,235,.1)}
-.fld input::placeholder{color:#cbd5e1}
-.btn-go{width:100%;padding:.9rem;background:linear-gradient(135deg,#1e3a8a,#2563eb);border:none;border-radius:8px;color:#fff;font-size:1rem;font-weight:700;cursor:pointer;margin-top:.5rem;box-shadow:0 4px 12px rgba(30,58,138,.25);transition:opacity .2s}
-.btn-go:hover{opacity:.9}
+.btn-go{width:100%;padding:.9rem;background:linear-gradient(135deg,#1e3a8a,#2563eb);border:none;border-radius:8px;color:#fff;font-size:1rem;font-weight:700;cursor:pointer;margin-top:.5rem}
 .rules{background:#eff6ff;border:1px solid #bfdbfe;border-radius:10px;padding:1rem 1.2rem;margin-top:1.5rem}
 .rules h4{font-size:.78rem;font-weight:700;color:#1e3a8a;margin-bottom:.5rem}
 .rules li{font-size:.8rem;color:#1e40af;line-height:1.8;list-style:none}
-.rules li::before{content:'• ';color:#d97706;font-weight:700}
+.rules li::before{content:'- '}
 .topbar{position:sticky;top:0;z-index:100;background:#fff;border-bottom:2px solid #e2e8f0;padding:.65rem 1.5rem;display:flex;align-items:center;gap:1.2rem;box-shadow:0 2px 6px rgba(0,0,0,.05)}
-.stag{font-size:.78rem;color:#64748b;flex:1;overflow:hidden;white-space:nowrap}
+.stag{font-size:.78rem;color:#64748b;flex:1}
 .stag b{color:#1e3a8a}
 .pbwrap{flex:2;display:flex;align-items:center;gap:.7rem}
 .pbar{flex:1;height:6px;background:#e2e8f0;border-radius:99px;overflow:hidden}
 .pfill{height:100%;background:linear-gradient(90deg,#1e3a8a,#2563eb);border-radius:99px;transition:width .3s;width:0%}
-.ptxt{font-size:.7rem;color:#64748b;font-family:monospace;white-space:nowrap}
-.tmr{font-family:monospace;font-size:1.05rem;font-weight:700;padding:.3rem .8rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;white-space:nowrap;transition:all .3s}
-.tmr.warn{color:#d97706;border-color:#d97706;background:#fffbeb}
-.tmr.danger{color:#dc2626;border-color:#dc2626;background:#fef2f2;animation:blink 1s infinite}
+.ptxt{font-size:.7rem;color:#64748b;font-family:monospace}
+.tmr{font-family:monospace;font-size:1.05rem;font-weight:700;padding:.3rem .8rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px}
+.tmr.warn{color:#d97706;border-color:#d97706}
+.tmr.danger{color:#dc2626;border-color:#dc2626;animation:blink 1s infinite}
 .qwrap{flex:1;padding:1.5rem;max-width:880px;width:100%;margin:0 auto}
-.qcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.6rem 1.8rem;margin-bottom:1.1rem;box-shadow:0 1px 3px rgba(0,0,0,.06);transition:border-color .2s;animation:up .25s ease both}
-.qcard:hover{border-color:#bfdbfe}
-.qcard.done{border-color:#86efac;box-shadow:0 0 0 3px rgba(5,150,105,.06)}
+.qcard{background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.6rem 1.8rem;margin-bottom:1.1rem;box-shadow:0 1px 3px rgba(0,0,0,.06);animation:up .25s ease both}
+.qcard.done{border-color:#86efac}
 .qhead{display:flex;align-items:flex-start;gap:.9rem;margin-bottom:1.1rem}
-.qnum{flex-shrink:0;width:32px;height:32px;background:linear-gradient(135deg,#1e3a8a,#2563eb);border-radius:8px;font-family:monospace;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .3s}
+.qnum{flex-shrink:0;width:32px;height:32px;background:linear-gradient(135deg,#1e3a8a,#2563eb);border-radius:8px;font-size:.8rem;font-weight:700;display:flex;align-items:center;justify-content:center;color:#fff}
 .qnum.ok{background:linear-gradient(135deg,#059669,#10b981)}
 .tag{font-size:.58rem;font-weight:700;padding:.12rem .48rem;border-radius:99px;margin-right:.3rem}
 .t1{background:#eff6ff;color:#1e3a8a;border:1px solid #bfdbfe}
@@ -64,112 +60,63 @@ body{background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
 .t4{background:#f0fdf4;color:#059669;border:1px solid #bbf7d0}
 .t5{background:#fff7ed;color:#c2410c;border:1px solid #fed7aa}
 .qtext{font-size:.95rem;line-height:1.7;flex:1}
-.qtext strong{font-weight:700;color:#1e3a8a}
-.qtext em{color:#d97706;font-style:normal;font-weight:600}
 .cnote{font-size:.75rem;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:.38rem .7rem;margin-bottom:.7rem}
 .opts{display:flex;flex-direction:column;gap:.42rem}
-.opt{display:flex;align-items:flex-start;gap:.75rem;padding:.68rem .9rem;border:1.5px solid #e2e8f0;border-radius:8px;cursor:pointer;transition:all .15s;user-select:none;background:#fff}
+.opt{display:flex;align-items:flex-start;gap:.75rem;padding:.68rem .9rem;border:1.5px solid #e2e8f0;border-radius:8px;cursor:pointer;user-select:none;background:#fff}
 .opt:hover{border-color:#2563eb;background:#eff6ff}
-.opt.sel{border-color:#2563eb;background:#eff6ff;box-shadow:0 0 0 3px rgba(37,99,235,.07)}
+.opt.sel{border-color:#2563eb;background:#eff6ff}
 .opt input{width:16px;height:16px;flex-shrink:0;margin-top:2px;accent-color:#1e3a8a}
 .ol{font-family:monospace;font-size:.74rem;font-weight:700;color:#1e3a8a;flex-shrink:0;width:14px;margin-top:2px}
 .ot{font-size:.89rem;line-height:1.5}
 .sva{background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:10px;padding:.8rem;margin-bottom:.8rem;display:flex;justify-content:center;overflow:hidden}
 .sva svg{max-width:100%;height:auto;display:block}
-.svcap{text-align:center;font-size:.7rem;color:#64748b;font-family:monospace;margin-bottom:.8rem}
+.svcap{text-align:center;font-size:.7rem;color:#64748b;margin-bottom:.8rem}
 .hintbox{font-size:.78rem;color:#92400e;background:#fffbeb;border:1px solid #fde68a;border-radius:6px;padding:.4rem .7rem;margin-bottom:.7rem}
 .hz{cursor:pointer}
-.hz rect{transition:fill .15s}
-.hz:hover rect{fill:rgba(37,99,235,.2)!important}
-.hz.sel rect{fill:rgba(37,99,235,.28)!important;stroke:#2563eb!important;stroke-width:2.5!important}
 .hsfb{font-size:.77rem;font-family:monospace;color:#059669;margin-top:.4rem;min-height:1em}
 .mwrap{display:grid;grid-template-columns:1fr 1fr;gap:1rem}
-.mcolt{font-size:.68rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.07em;margin-bottom:.5rem;text-align:center}
-.ditem{padding:.6rem .9rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;cursor:grab;font-size:.84rem;margin-bottom:.4rem;display:flex;align-items:center;gap:.5rem;user-select:none;transition:all .2s}
-.ditem:hover{border-color:#2563eb;background:#eff6ff;transform:translateX(3px)}
+.mcolt{font-size:.68rem;font-weight:700;color:#64748b;text-transform:uppercase;margin-bottom:.5rem;text-align:center}
+.ditem{padding:.6rem .9rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;cursor:grab;font-size:.84rem;margin-bottom:.4rem;user-select:none}
+.ditem:hover{border-color:#2563eb;background:#eff6ff}
 .ditem.dragging{opacity:.3}
-.dzone{min-height:50px;padding:.4rem .8rem;background:#f8fafc;border:1.5px dashed #cbd5e1;border-radius:8px;margin-bottom:.4rem;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#94a3b8;transition:all .2s;position:relative}
+.dzone{min-height:50px;padding:.4rem .8rem;background:#f8fafc;border:1.5px dashed #cbd5e1;border-radius:8px;margin-bottom:.4rem;display:flex;align-items:center;justify-content:center;font-size:.82rem;color:#94a3b8;position:relative}
 .dzone.over{border-color:#2563eb;background:#eff6ff}
 .dzone.fill{border-style:solid;border-color:#86efac;background:#f0fdf4;color:#1e293b}
 .dzlbl{position:absolute;top:-10px;left:8px;background:#fff;padding:0 5px;font-size:.67rem;color:#1e3a8a;font-weight:700}
 .dzrm{position:absolute;top:3px;right:6px;cursor:pointer;color:#94a3b8;background:none;border:none;font-size:.85rem}
-.dzrm:hover{color:#dc2626}
 .seqwrap{display:flex;flex-direction:column;gap:.42rem}
-.sitem{padding:.62rem 1rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;cursor:grab;display:flex;align-items:center;gap:.8rem;font-size:.87rem;user-select:none;transition:border-color .2s}
+.sitem{padding:.62rem 1rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;cursor:grab;display:flex;align-items:center;gap:.8rem;font-size:.87rem;user-select:none}
 .sitem:hover{border-color:#2563eb}
 .sitem.dragging{opacity:.3}
 .snum{width:26px;height:26px;background:#e2e8f0;border-radius:6px;font-family:monospace;font-size:.74rem;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0;color:#1e3a8a}
-.shint{font-size:.67rem;color:#94a3b8;font-family:monospace;margin-left:auto;background:#e2e8f0;padding:1px 5px;border-radius:4px}
+.shint{font-size:.67rem;color:#94a3b8;font-family:monospace;margin-left:auto}
+.pkt-hint{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:.8rem 1rem;margin-bottom:.8rem;font-size:.82rem;color:#92400e}
+.pkt-drop{border:2px dashed #cbd5e1;border-radius:10px;padding:1.8rem;text-align:center;cursor:pointer;background:#f8fafc;margin-bottom:.5rem}
+.pkt-drop:hover{border-color:#2563eb;background:#eff6ff}
+.pkt-status{margin-top:.6rem;font-size:.8rem;font-family:monospace;color:#64748b;min-height:1.2em}
 .subbar{position:sticky;bottom:0;background:#fff;border-top:2px solid #e2e8f0;padding:.85rem 1.5rem;display:flex;align-items:center;justify-content:space-between;box-shadow:0 -2px 8px rgba(0,0,0,.05)}
 .ac{font-size:.82rem;color:#64748b}
 .ac em{color:#059669;font-style:normal;font-weight:700}
-.btn-sub{padding:.7rem 2rem;background:linear-gradient(135deg,#059669,#10b981);border:none;border-radius:8px;color:#fff;font-size:.92rem;font-weight:700;cursor:pointer;box-shadow:0 4px 10px rgba(5,150,105,.25);transition:opacity .2s}
-.btn-sub:hover{opacity:.9}
-#ov{position:fixed;inset:0;background:rgba(255,255,255,.85);backdrop-filter:blur(4px);z-index:999;display:none;flex-direction:column;align-items:center;justify-content:center;gap:1.2rem}
-#ov.show{display:flex}
-.sp{width:44px;height:44px;border:4px solid #e2e8f0;border-top-color:#1e3a8a;border-radius:50%;animation:spin 1s linear infinite}
-#sr{background:#f1f5f9;align-items:center;justify-content:flex-start;padding-bottom:2rem}
-.rcard{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:2.5rem;width:100%;max-width:700px;margin:2rem auto;box-shadow:0 4px 6px rgba(0,0,0,.06)}
-.rring{width:120px;height:120px;margin:0 auto 1rem;position:relative}
-.rring svg{width:100%;height:100%;transform:rotate(-90deg)}
-.rt{fill:none;stroke:#e2e8f0;stroke-width:9}
-.rf{fill:none;stroke-width:9;stroke-linecap:round;transition:stroke-dashoffset 1.2s ease}
-.rnum{position:absolute;inset:0;display:flex;flex-direction:column;align-items:center;justify-content:center;font-family:monospace}
-.rnum .big{font-size:1.6rem;font-weight:700}
-.rnum .out{font-size:.7rem;color:#64748b}
-.rname{text-align:center;font-size:1.05rem;font-weight:700;margin-bottom:.2rem}
-.rid{text-align:center;font-family:monospace;font-size:.78rem;color:#64748b;margin-bottom:.7rem}
-.rgb{display:block;text-align:center;padding:.3rem 1.2rem;border-radius:99px;font-family:monospace;font-size:.88rem;font-weight:700;margin:.2rem auto 1.3rem;width:fit-content}
-.gA{background:#d1fae5;color:#065f46;border:1px solid #6ee7b7}
-.gB{background:#dbeafe;color:#1e3a8a;border:1px solid #93c5fd}
-.gC{background:#fef3c7;color:#92400e;border:1px solid #fde68a}
-.gF{background:#fee2e2;color:#991b1b;border:1px solid #fca5a5}
-.rstats{display:grid;grid-template-columns:repeat(4,1fr);gap:.7rem;margin-bottom:1.3rem}
-.rst{background:#f8fafc;border:1px solid #e2e8f0;border-radius:10px;padding:.9rem;text-align:center}
-.rsv{font-family:monospace;font-size:1.3rem;font-weight:700}
-.rsl{font-size:.62rem;color:#64748b;text-transform:uppercase;letter-spacing:.06em}
-.rvhdr{font-size:.7rem;font-weight:700;color:#64748b;text-transform:uppercase;letter-spacing:.1em;margin:.8rem 0 .5rem}
-.rvi{display:flex;gap:.7rem;align-items:flex-start;padding:.6rem .8rem;border-radius:8px;margin-bottom:.38rem;font-size:.82rem;background:#f8fafc;border:1px solid #e2e8f0}
-.rvi.ok{border-color:#86efac;background:#f0fdf4}
-.rvi.ng{border-color:#fca5a5;background:#fef2f2}
-.ric{flex-shrink:0;font-size:.9rem;margin-top:1px}
-.rib{flex:1;line-height:1.5}
-.ria{font-size:.74rem;color:#64748b;margin-top:.2rem}
-.rie{font-size:.74rem;color:#059669;font-weight:600;margin-top:.15rem}
-.ract{display:flex;gap:.8rem;margin-top:1.5rem;justify-content:center}
-.btn-p{padding:.65rem 1.5rem;background:#f8fafc;border:1.5px solid #e2e8f0;border-radius:8px;color:#1e293b;font-size:.88rem;font-weight:600;cursor:pointer;transition:all .2s}
-.btn-p:hover{border-color:#2563eb;background:#eff6ff}
-.btn-n{padding:.65rem 1.5rem;background:linear-gradient(135deg,#1e3a8a,#2563eb);border:none;border-radius:8px;color:#fff;font-size:.88rem;font-weight:700;cursor:pointer}
-.srvmsg{font-size:.74rem;font-family:monospace;text-align:center;margin-top:.8rem;padding:.5rem;border-radius:7px}
-.srvok{color:#065f46;background:#d1fae5;border:1px solid #6ee7b7}
-.srverr{color:#92400e;background:#fef3c7;border:1px solid #fde68a}
-.footer{background:#1e3a8a;padding:.65rem 2rem;display:flex;justify-content:space-between;margin-top:auto}
-.footer span{font-size:.67rem;color:#93c5fd}
-@media print{.topbar,.subbar,.ract,#se,.footer{display:none!important}body,#sr{background:#fff}.rcard{border:none;box-shadow:none;max-width:100%}}
-@media(max-width:600px){.lcard{margin:1rem;padding:1.8rem 1.4rem}.igrid,.rstats{grid-template-columns:repeat(2,1fr)}.mwrap{grid-template-columns:1fr}.hdr-right{display:none}}
-
-.pkt-hint{background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:.8rem 1rem;margin-bottom:.8rem;font-size:.82rem;color:#92400e}
-.pkt-drop{border:2px dashed #cbd5e1;border-radius:10px;padding:1.8rem;text-align:center;cursor:pointer;background:#f8fafc;transition:all .2s;margin-bottom:.5rem}
-.pkt-drop:hover{border-color:#2563eb;background:#eff6ff}
-.pkt-drop-text{font-size:.88rem;color:#64748b}
-.pkt-drop-text b{color:#1e3a8a}
-.pkt-browse{color:#2563eb;font-weight:600}
-.pkt-label{font-size:.72rem;color:#94a3b8;margin-top:.3rem}
-.pkt-status{margin-top:.6rem;font-size:.8rem;font-family:monospace;color:#64748b;min-height:1.2em}
-.pkt-ok{color:#059669;font-weight:600}
+.btn-sub{padding:.7rem 2rem;background:linear-gradient(135deg,#059669,#10b981);border:none;border-radius:8px;color:#fff;font-size:.92rem;font-weight:700;cursor:pointer}
+#sr{background:#f1f5f9;align-items:center;justify-content:center}
+.rcard{background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,.06)}
+.ftr{background:#1e3a8a;padding:.65rem 2rem;display:flex;justify-content:space-between;margin-top:auto}
+.ftr span{font-size:.67rem;color:#93c5fd}
+@media(max-width:600px){.mwrap{grid-template-columns:1fr}.hdr-right{display:none}.lcard{margin:1rem;padding:1.5rem}}
 </style>
 </head>
 <body>
-<div id="ov"><div class="sp"></div><div style="font-family:monospace;color:#1e3a8a">Saving result…</div></div>
+
+<!-- LOGIN -->
 <div id="sl" class="scr on">
 <div class="hdr">
   <div class="hdr-logo">
-    <div class="emblem"><div class="e1">DPU</div><div class="e2">★ ★ ★</div></div>
-    <div class="hdr-text"><div class="h1">Duhok Polytechnic University</div><div class="h2">Technical College of Duhok — Department of Information Technology</div></div>
+    <div class="emb"><div class="e1">DPU</div><div class="e2">&#9733;&#9733;&#9733;</div></div>
+    <div class="hdr-text"><div class="h1">Duhok Polytechnic University</div><div class="h2">Technical College of Duhok &mdash; Department of Information Technology</div></div>
   </div>
-  <div class="hdr-right"><div class="r1">ITE 8.0 — Module 2 Final Exam</div><div class="r2">PC Assembly · 2025–2026</div></div>
+  <div class="hdr-right"><div class="r1">ITE 8.0 &mdash; Module 2 Final Exam</div><div class="r2">PC Assembly &middot; 2025&ndash;2026</div></div>
 </div>
-<div style="max-width:550px;width:100%;margin:0 auto;padding:0 1rem">
+<div style="max-width:520px;width:100%;margin:0 auto;padding:0 1rem;flex:1;display:flex;align-items:center">
 <div class="lcard">
   <div class="sec">Exam Details</div>
   <div class="igrid">
@@ -179,250 +126,418 @@ body{background:#f1f5f9;font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',
     <div class="ibox"><div class="ival">ITE 8.0</div><div class="ilbl">Course</div></div>
   </div>
   <div class="sec">Student Login</div>
-  <div class="fld"><label>Full Name</label><input id="in" type="text" placeholder="Enter your full name…" autocomplete="off"></div>
-  <div class="fld"><label>Student ID</label><input id="ii" type="text" placeholder="Enter your student ID…" autocomplete="off"></div>
-  <button class="btn-go" onclick="go()">Begin Exam →</button>
-  <div class="rules"><h4>📋 Instructions</h4><ul>
-    <li>Do not close or refresh the browser during the exam</li>
+  <div class="fld"><label>Full Name</label><input id="iname" type="text" placeholder="Enter your full name"></div>
+  <div class="fld"><label>Student ID</label><input id="iid" type="text" placeholder="Enter your student ID"></div>
+  <button class="btn-go" onclick="go()">Begin Exam &rarr;</button>
+  <div class="rules"><h4>Instructions</h4><ul>
+    <li>Do not close or refresh the browser</li>
     <li>Timer auto-submits when time expires</li>
-    <li>Drag &amp; Match: drag right-side items to correct boxes on left</li>
-    <li>Hotspot: click the correct zone on the diagram</li>
-    <li>Sequence: drag steps into the correct order</li>
-    <li>Results are automatically sent to your instructor</li>
+    <li>Results are sent to your instructor automatically</li>
   </ul></div>
-</div></div>
-<div class="footer"><span>© Duhok Polytechnic University — IT Department</span><span>ITE 8.0 Module 2 PC Assembly · 2025–2026</span></div>
+</div>
+</div>
+<div class="ftr"><span>&copy; Duhok Polytechnic University</span><span>ITE 8.0 Module 2 &middot; 2025&ndash;2026</span></div>
 </div>
 
+<!-- EXAM -->
 <div id="se" class="scr">
 <div class="hdr" style="padding:.65rem 1.5rem">
   <div class="hdr-logo">
-    <div class="emblem" style="width:40px;height:40px"><div class="e1" style="font-size:.68rem">DPU</div></div>
-    <div class="hdr-text"><div class="h1" style="font-size:.82rem">Duhok Polytechnic University</div><div class="h2" style="font-size:.65rem">ITE 8.0 · Module 2 Final Exam</div></div>
+    <div class="emb" style="width:40px;height:40px"><div class="e1" style="font-size:.68rem">DPU</div></div>
+    <div class="hdr-text"><div class="h1" style="font-size:.82rem">ITE 8.0 &middot; Module 2 Final Exam</div></div>
   </div>
   <div class="hdr-right"><div class="r1" id="dn" style="font-size:.82rem"></div><div class="r2" id="did"></div></div>
 </div>
 <div class="topbar">
-  <div class="stag">📝 <b id="dn2"></b></div>
-  <div class="pbwrap"><div class="pbar"><div class="pfill" id="pf"></div></div><div class="ptxt" id="pt">0 / 30</div></div>
+  <div class="stag">&#128221; <b id="dn2"></b></div>
+  <div class="pbwrap"><div class="pbar"><div class="pfill" id="pf"></div></div><div class="ptxt" id="pt">0 / 33</div></div>
   <div class="tmr" id="tm">1:30:00</div>
 </div>
 <div class="qwrap" id="qw"></div>
-
-<div id="upload-section" style="display:none;max-width:880px;margin:0 auto;padding:0 1.5rem 2rem">
-  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:12px;padding:1.6rem 1.8rem;box-shadow:0 1px 3px rgba(0,0,0,.06)">
-    <div style="display:flex;align-items:center;gap:.8rem;margin-bottom:1rem">
-      <div style="width:32px;height:32px;background:linear-gradient(135deg,#d97706,#f59e0b);border-radius:8px;display:flex;align-items:center;justify-content:center;color:#fff;font-size:.9rem">📁</div>
-      <div>
-        <div style="font-size:.95rem;font-weight:700;color:#1e293b">Upload Packet Tracer File</div>
-        <div style="font-size:.72rem;color:#64748b;font-family:monospace">Required: upload your .pkt file to complete the exam</div>
-      </div>
-    </div>
-    <div id="drop-area" style="border:2px dashed #cbd5e1;border-radius:10px;padding:2rem;text-align:center;cursor:pointer;transition:all .2s;background:#f8fafc"
-      ondragover="event.preventDefault();this.style.borderColor='#2563eb';this.style.background='#eff6ff'"
-      ondragleave="this.style.borderColor='#cbd5e1';this.style.background='#f8fafc'"
-      ondrop="handleDrop(event)"
-      id="drop-area-btn">
-      <div style="font-size:2rem;margin-bottom:.5rem">📂</div>
-      <div style="font-size:.9rem;color:#64748b">Drag &amp; drop your <strong style="color:#1e3a8a">.pkt</strong> file here, or <span style="color:#2563eb;font-weight:600">click to browse</span></div>
-      <div style="font-size:.75rem;color:#94a3b8;margin-top:.4rem">Accepted: Cisco Packet Tracer files (.pkt)</div>
-    </div>
-    <input type="file" id="pkt-input" accept=".pkt" style="display:none" onchange="handleFile(this.files[0])">
-    <div id="file-status" style="margin-top:.8rem;font-size:.82rem;font-family:monospace;color:#64748b;min-height:1.2em"></div>
-    <div id="file-preview" style="display:none;margin-top:.8rem;background:#f0fdf4;border:1px solid #86efac;border-radius:8px;padding:.8rem 1rem;display:flex;align-items:center;gap:.8rem">
-      <span style="font-size:1.2rem">📄</span>
-      <div style="flex:1">
-        <div id="file-name" style="font-weight:600;color:#065f46;font-size:.88rem"></div>
-        <div id="file-size" style="font-size:.72rem;color:#6b7280;font-family:monospace"></div>
-      </div>
-      <button id="clear-file-btn" style="background:none;border:none;cursor:pointer;color:#94a3b8;font-size:.9rem">✕</button>
-    </div>
-  </div>
-</div>
-<div class="subbar"><div class="ac">Answered: <em id="an">0</em> / 30</div><button class="btn-sub" onclick="sub(false)">Submit Exam ✓</button></div>
+<div class="subbar"><div class="ac">Answered: <em id="an">0</em> / 33</div><button class="btn-sub" onclick="sub(false)">Submit Exam &#10003;</button></div>
 </div>
 
+<!-- SUBMITTED -->
 <div id="sr" class="scr">
-<div style="background:linear-gradient(135deg,#1e3a8a,#2563eb);padding:.9rem 2rem;display:flex;align-items:center;gap:14px;box-shadow:0 2px 10px rgba(30,58,138,.35)">
-  <div style="width:44px;height:44px;background:#fff;border-radius:50%;display:flex;flex-direction:column;align-items:center;justify-content:center;font-size:.7rem;font-weight:900;color:#1e3a8a;flex-shrink:0">
-    <div>DPU</div><div style="font-size:.45rem;color:#d97706">★★★</div>
-  </div>
-  <div>
-    <div style="font-size:.95rem;font-weight:700;color:#fff">Duhok Polytechnic University</div>
-    <div style="font-size:.68rem;color:#bfdbfe">ITE 8.0 · Module 2 Final Exam</div>
+<div class="hdr">
+  <div class="hdr-logo">
+    <div class="emb"><div class="e1">DPU</div><div class="e2">&#9733;&#9733;&#9733;</div></div>
+    <div class="hdr-text"><div class="h1">Duhok Polytechnic University</div><div class="h2">ITE 8.0 &middot; Module 2 Final Exam</div></div>
   </div>
 </div>
-<div style="flex:1;display:flex;align-items:center;justify-content:center;background:#f1f5f9;padding:2rem">
-  <div style="background:#fff;border:1px solid #e2e8f0;border-radius:16px;padding:3rem 2.5rem;max-width:480px;width:100%;text-align:center;box-shadow:0 4px 6px rgba(0,0,0,.06)">
-    <div style="width:80px;height:80px;background:#d1fae5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2.5rem">✅</div>
-    <h2 style="font-size:1.3rem;font-weight:700;color:#1e293b;margin-bottom:.8rem">Answers Submitted</h2>
-    <p style="font-size:.92rem;color:#64748b;line-height:1.7;margin-bottom:1.5rem">Your exam has been submitted successfully.<br>Your instructor has received your answers.<br>You may now close this tab.</p>
-    <div id="sub-info" style="font-size:.84rem;font-family:monospace;color:#1e3a8a;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.7rem 1rem;margin-bottom:.8rem"></div>
-    <div id="sub-status" style="font-size:.78rem;font-family:monospace;color:#64748b;min-height:1.2em"></div>
-  </div>
-</div>
-<div style="background:#1e3a8a;padding:.65rem 2rem;display:flex;justify-content:space-between">
-  <span style="font-size:.67rem;color:#93c5fd">© Duhok Polytechnic University — IT Department</span>
-  <span style="font-size:.67rem;color:#93c5fd">ITE 8.0 · Module 2 · 2025–2026</span>
+<div class="rcard" style="margin:2rem auto">
+  <div style="width:80px;height:80px;background:#d1fae5;border-radius:50%;display:flex;align-items:center;justify-content:center;margin:0 auto 1.5rem;font-size:2.5rem">&#10003;</div>
+  <h2 style="font-size:1.3rem;font-weight:700;margin-bottom:.8rem">Answers Submitted</h2>
+  <p style="font-size:.92rem;color:#64748b;line-height:1.7;margin-bottom:1.5rem">Your exam has been submitted successfully.<br>Your instructor has received your answers.</p>
+  <div id="sub-info" style="font-size:.84rem;font-family:monospace;color:#1e3a8a;background:#eff6ff;border:1px solid #bfdbfe;border-radius:8px;padding:.7rem 1rem;margin-bottom:.8rem"></div>
+  <div id="sub-status" style="font-size:.78rem;font-family:monospace;color:#64748b"></div>
 </div>
 </div>
+
 <script>
-const SVG={mb:`<svg viewBox="0 0 500 290" xmlns="http://www.w3.org/2000/svg"><rect x="3" y="3" width="494" height="284" rx="7" fill="#163316" stroke="#1a4a1a" stroke-width="2"/><g stroke="#1e3e1e" stroke-width=".6" fill="none"><line x1="78" y1="3" x2="78" y2="287"/><line x1="198" y1="3" x2="198" y2="287"/><line x1="3" y1="98" x2="497" y2="98"/><line x1="3" y1="185" x2="497" y2="185"/></g><rect x="42" y="32" width="110" height="110" rx="4" fill="#091520" stroke="#2563eb" stroke-width="2.5"/><rect x="54" y="44" width="86" height="86" rx="2" fill="#1a2535" stroke="#374151"/><g fill="#4b6a8a"><rect x="61" y="51" width="2" height="2"/><rect x="69" y="51" width="2" height="2"/><rect x="77" y="51" width="2" height="2"/><rect x="85" y="51" width="2" height="2"/><rect x="93" y="51" width="2" height="2"/><rect x="101" y="51" width="2" height="2"/><rect x="109" y="51" width="2" height="2"/><rect x="117" y="51" width="2" height="2"/><rect x="61" y="62" width="2" height="2"/><rect x="69" y="62" width="2" height="2"/><rect x="77" y="62" width="2" height="2"/><rect x="85" y="62" width="2" height="2"/><rect x="93" y="62" width="2" height="2"/><rect x="101" y="62" width="2" height="2"/><rect x="109" y="62" width="2" height="2"/><rect x="117" y="62" width="2" height="2"/><rect x="61" y="73" width="2" height="2"/><rect x="69" y="73" width="2" height="2"/><rect x="77" y="73" width="2" height="2"/><rect x="85" y="73" width="2" height="2"/><rect x="93" y="73" width="2" height="2"/><rect x="101" y="73" width="2" height="2"/><rect x="109" y="73" width="2" height="2"/><rect x="117" y="73" width="2" height="2"/><rect x="61" y="84" width="2" height="2"/><rect x="69" y="84" width="2" height="2"/><rect x="77" y="84" width="2" height="2"/><rect x="85" y="84" width="2" height="2"/><rect x="93" y="84" width="2" height="2"/><rect x="101" y="84" width="2" height="2"/><rect x="109" y="84" width="2" height="2"/><rect x="117" y="84" width="2" height="2"/></g><text x="97" y="152" text-anchor="middle" fill="#93c5fd" font-size="8" font-family="Arial" font-weight="bold">CPU SOCKET</text><text x="44" y="28" fill="#60a5fa" font-size="12" font-weight="bold" font-family="Arial">A</text><rect x="205" y="22" width="17" height="120" rx="2" fill="#1a1030" stroke="#8b5cf6" stroke-width="1.5"/><rect x="227" y="22" width="17" height="120" rx="2" fill="#1a1030" stroke="#8b5cf6" stroke-width="1.5"/><rect x="249" y="22" width="17" height="120" rx="2" fill="#1e2535" stroke="#374151"/><rect x="271" y="22" width="17" height="120" rx="2" fill="#1e2535" stroke="#374151"/><text x="238" y="154" text-anchor="middle" fill="#a78bfa" font-size="8" font-family="Arial">RAM SLOTS</text><text x="205" y="17" fill="#a78bfa" font-size="12" font-weight="bold" font-family="Arial">B</text><rect x="24" y="177" width="248" height="17" rx="3" fill="#091520" stroke="#06b6d4" stroke-width="2"/><g fill="#0a2a1a"><rect x="30" y="180" width="4" height="11"/><rect x="36" y="180" width="4" height="11"/><rect x="42" y="180" width="4" height="11"/><rect x="48" y="180" width="4" height="11"/><rect x="54" y="180" width="4" height="11"/><rect x="60" y="180" width="4" height="11"/><rect x="66" y="180" width="4" height="11"/><rect x="72" y="180" width="4" height="11"/><rect x="78" y="180" width="4" height="11"/><rect x="84" y="180" width="4" height="11"/><rect x="90" y="180" width="4" height="11"/><rect x="96" y="180" width="4" height="11"/><rect x="108" y="180" width="4" height="11"/><rect x="114" y="180" width="4" height="11"/><rect x="120" y="180" width="4" height="11"/><rect x="126" y="180" width="4" height="11"/><rect x="132" y="180" width="4" height="11"/><rect x="138" y="180" width="4" height="11"/><rect x="144" y="180" width="4" height="11"/><rect x="150" y="180" width="4" height="11"/><rect x="156" y="180" width="4" height="11"/><rect x="162" y="180" width="4" height="11"/><rect x="168" y="180" width="4" height="11"/><rect x="174" y="180" width="4" height="11"/><rect x="180" y="180" width="4" height="11"/><rect x="186" y="180" width="4" height="11"/><rect x="192" y="180" width="4" height="11"/><rect x="198" y="180" width="4" height="11"/><rect x="204" y="180" width="4" height="11"/><rect x="210" y="180" width="4" height="11"/><rect x="216" y="180" width="4" height="11"/><rect x="222" y="180" width="4" height="11"/><rect x="228" y="180" width="4" height="11"/><rect x="240" y="180" width="4" height="11"/><rect x="246" y="180" width="4" height="11"/><rect x="252" y="180" width="4" height="11"/><rect x="258" y="180" width="4" height="11"/><rect x="264" y="180" width="4" height="11"/></g><text x="148" y="208" text-anchor="middle" fill="#22d3ee" font-size="8" font-family="Arial" font-weight="bold">PCIe x16</text><text x="24" y="173" fill="#22d3ee" font-size="12" font-weight="bold" font-family="Arial">C</text><rect x="24" y="217" width="85" height="12" rx="2" fill="#091520" stroke="#475569"/><text x="66" y="241" text-anchor="middle" fill="#64748b" font-size="7" font-family="Arial">PCIe x1</text><text x="24" y="248" fill="#9ca3af" font-size="12" font-weight="bold" font-family="Arial">D</text><rect x="362" y="36" width="14" height="22" rx="1" fill="#091520" stroke="#f59e0b" stroke-width="1.5"/><rect x="380" y="36" width="14" height="22" rx="1" fill="#091520" stroke="#f59e0b" stroke-width="1.5"/><rect x="398" y="36" width="14" height="22" rx="1" fill="#091520" stroke="#f59e0b" stroke-width="1.5"/><rect x="416" y="36" width="14" height="22" rx="1" fill="#091520" stroke="#f59e0b" stroke-width="1.5"/><text x="398" y="70" text-anchor="middle" fill="#fbbf24" font-size="8" font-family="Arial" font-weight="bold">SATA</text><text x="362" y="31" fill="#fbbf24" font-size="12" font-weight="bold" font-family="Arial">E</text><rect x="433" y="145" width="40" height="70" rx="2" fill="#091520" stroke="#10b981" stroke-width="2"/><g fill="#042d1e"><rect x="437" y="149" width="5" height="7"/><rect x="444" y="149" width="5" height="7"/><rect x="451" y="149" width="5" height="7"/><rect x="458" y="149" width="5" height="7"/><rect x="465" y="149" width="5" height="7"/><rect x="437" y="159" width="5" height="7"/><rect x="444" y="159" width="5" height="7"/><rect x="451" y="159" width="5" height="7"/><rect x="458" y="159" width="5" height="7"/><rect x="465" y="159" width="5" height="7"/><rect x="437" y="169" width="5" height="7"/><rect x="444" y="169" width="5" height="7"/><rect x="451" y="169" width="5" height="7"/><rect x="458" y="169" width="5" height="7"/><rect x="465" y="169" width="5" height="7"/><rect x="437" y="179" width="5" height="7"/><rect x="444" y="179" width="5" height="7"/><rect x="451" y="179" width="5" height="7"/><rect x="458" y="179" width="5" height="7"/><rect x="465" y="179" width="5" height="7"/><rect x="437" y="189" width="5" height="7"/><rect x="444" y="189" width="5" height="7"/><rect x="451" y="189" width="5" height="7"/></g><text x="453" y="223" text-anchor="middle" fill="#34d399" font-size="7" font-family="Arial">24-pin</text><text x="433" y="140" fill="#34d399" font-size="12" font-weight="bold" font-family="Arial">F</text><rect x="3" y="258" width="494" height="29" fill="rgba(0,0,0,.38)"/><text x="250" y="278" text-anchor="middle" fill="#64748b" font-size="8" font-family="Arial">Identify each labelled component using your knowledge</text></svg>`,
-connectors:`<svg viewBox="0 0 500 230" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="500" height="230" fill="#f8fafc" rx="4"/><text x="8" y="15" fill="#475569" font-size="9" font-family="Arial" font-weight="700">ITE 8.0 Module 2 — Power &amp; Data Connectors (Topic 2.1.7)</text><rect x="8" y="22" width="2" height="38" fill="#2563eb"/><text x="16" y="33" fill="#1e3a8a" font-size="9" font-weight="700" font-family="Arial">A: SATA Data (7-pin)</text><rect x="11" y="38" width="78" height="19" rx="2" fill="#1e293b" stroke="#3b82f6" stroke-width="1.5"/><g fill="#475569"><rect x="16" y="42" width="3" height="11"/><rect x="21" y="42" width="3" height="11"/><rect x="26" y="42" width="3" height="11"/><rect x="31" y="42" width="3" height="11"/><rect x="36" y="42" width="3" height="11"/><rect x="41" y="42" width="3" height="11"/><rect x="46" y="42" width="3" height="11"/><rect x="51" y="42" width="3" height="11"/></g><text x="52" y="70" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Thin - data only</text><rect x="113" y="22" width="2" height="38" fill="#d97706"/><text x="121" y="33" fill="#92400e" font-size="9" font-weight="700" font-family="Arial">B: SATA Power (15-pin)</text><rect x="116" y="38" width="115" height="19" rx="2" fill="#1e293b" stroke="#f59e0b" stroke-width="1.5"/><rect x="120" y="42" width="4" height="11" fill="#dc2626"/><rect x="126" y="42" width="4" height="11" fill="#dc2626"/><rect x="132" y="42" width="4" height="11" fill="#374151"/><rect x="138" y="42" width="4" height="11" fill="#d97706"/><rect x="144" y="42" width="4" height="11" fill="#d97706"/><rect x="150" y="42" width="4" height="11" fill="#374151"/><rect x="156" y="42" width="4" height="11" fill="#d1d5db"/><rect x="162" y="42" width="4" height="11" fill="#d1d5db"/><rect x="168" y="42" width="4" height="11" fill="#d1d5db"/><rect x="174" y="42" width="4" height="11" fill="#374151"/><rect x="180" y="42" width="4" height="11" fill="#3b82f6"/><rect x="186" y="42" width="4" height="11" fill="#3b82f6"/><rect x="192" y="42" width="4" height="11" fill="#374151"/><rect x="198" y="42" width="4" height="11" fill="#374151"/><rect x="204" y="42" width="4" height="11" fill="#374151"/><text x="174" y="70" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Wide - coloured wires</text><rect x="255" y="22" width="2" height="38" fill="#6d28d9"/><text x="263" y="33" fill="#5b21b6" font-size="9" font-weight="700" font-family="Arial">C: Molex 4-pin</text><rect x="258" y="38" width="76" height="24" rx="3" fill="#1e293b" stroke="#8b5cf6" stroke-width="1.5"/><circle cx="274" cy="50" r="7" fill="#1e293b" stroke="#dc2626" stroke-width="2"/><circle cx="288" cy="50" r="7" fill="#1e293b" stroke="#374151"/><circle cx="302" cy="50" r="7" fill="#1e293b" stroke="#d97706" stroke-width="2"/><circle cx="316" cy="50" r="7" fill="#1e293b" stroke="#d1d5db" stroke-width="2"/><text x="294" y="75" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Round - legacy</text><rect x="8" y="95" width="2" height="52" fill="#059669"/><text x="16" y="107" fill="#065f46" font-size="9" font-weight="700" font-family="Arial">D: 24-pin ATX Main Power</text><rect x="11" y="112" width="143" height="42" rx="3" fill="#0f172a" stroke="#10b981" stroke-width="2"/><g fill="#042d1e" stroke="#10b981" stroke-width=".3"><rect x="15" y="116" width="9" height="14"/><rect x="26" y="116" width="9" height="14"/><rect x="37" y="116" width="9" height="14"/><rect x="48" y="116" width="9" height="14"/><rect x="59" y="116" width="9" height="14"/><rect x="70" y="116" width="9" height="14"/><rect x="81" y="116" width="9" height="14"/><rect x="92" y="116" width="9" height="14"/><rect x="103" y="116" width="9" height="14"/><rect x="114" y="116" width="9" height="14"/><rect x="125" y="116" width="9" height="14"/><rect x="136" y="116" width="9" height="14"/><rect x="15" y="132" width="9" height="14"/><rect x="26" y="132" width="9" height="14"/><rect x="37" y="132" width="9" height="14"/><rect x="48" y="132" width="9" height="14"/><rect x="59" y="132" width="9" height="14"/><rect x="70" y="132" width="9" height="14"/><rect x="81" y="132" width="9" height="14"/><rect x="92" y="132" width="9" height="14"/><rect x="103" y="132" width="9" height="14"/><rect x="114" y="132" width="9" height="14"/><rect x="125" y="132" width="9" height="14"/><rect x="136" y="132" width="9" height="14"/></g><rect x="178" y="95" width="2" height="52" fill="#db2777"/><text x="186" y="107" fill="#9d174d" font-size="9" font-weight="700" font-family="Arial">E: 8-pin CPU Power</text><rect x="181" y="112" width="102" height="42" rx="3" fill="#0f172a" stroke="#ec4899" stroke-width="2"/><g fill="#4c0519" stroke="#ec4899" stroke-width=".3"><rect x="186" y="116" width="19" height="14"/><rect x="207" y="116" width="19" height="14"/><rect x="228" y="116" width="19" height="14"/><rect x="249" y="116" width="19" height="14"/><rect x="186" y="132" width="19" height="14"/><rect x="207" y="132" width="19" height="14"/><rect x="228" y="132" width="19" height="14"/><rect x="249" y="132" width="19" height="14"/></g><rect x="320" y="95" width="2" height="52" fill="#ea580c"/><text x="328" y="107" fill="#9a3412" font-size="9" font-weight="700" font-family="Arial">F: Front Panel Header</text><rect x="323" y="112" width="158" height="34" rx="2" fill="#1e293b" stroke="#f97316" stroke-width="1.5"/><g fill="#091520" stroke="#f97316" stroke-width=".4"><rect x="328" y="117" width="9" height="9"/><rect x="340" y="117" width="9" height="9"/><rect x="352" y="117" width="9" height="9"/><rect x="364" y="117" width="9" height="9"/><rect x="376" y="117" width="9" height="9"/><rect x="388" y="117" width="9" height="9"/><rect x="400" y="117" width="9" height="9"/><rect x="412" y="117" width="9" height="9"/><rect x="424" y="117" width="9" height="9"/><rect x="328" y="129" width="9" height="9"/><rect x="340" y="129" width="9" height="9"/><rect x="352" y="129" width="9" height="9"/><rect x="364" y="129" width="9" height="9"/><rect x="376" y="129" width="9" height="9"/><rect x="388" y="129" width="9" height="9"/><rect x="400" y="129" width="9" height="9"/><rect x="412" y="129" width="9" height="9"/></g><text x="403" y="158" text-anchor="middle" fill="#64748b" font-size="7" font-family="Arial">PWR - RST - LED pins</text><rect x="8" y="170" width="484" height="50" rx="5" fill="#f8fafc" stroke="#e2e8f0"/><text x="250" y="200" text-anchor="middle" fill="#64748b" font-size="8" font-family="Arial">Identify each connector based on shape, size, and pin count</text></svg>`,
-drives:`<svg viewBox="0 0 480 210" xmlns="http://www.w3.org/2000/svg"><rect x="0" y="0" width="480" height="210" fill="#f8fafc" rx="4"/><text x="10" y="16" fill="#475569" font-size="9" font-family="Arial" font-weight="700">ITE 8.0 Module 2 - Drive Types and Bay Sizes (Topic 2.1.4)</text><g transform="translate(10,24)"><rect x="0" y="0" width="125" height="72" rx="4" fill="#374151" stroke="#6b7280" stroke-width="1.5"/><rect x="7" y="7" width="111" height="5" rx="2" fill="#1f2937"/><rect x="7" y="16" width="111" height="5" rx="2" fill="#1f2937"/><circle cx="106" cy="46" r="19" fill="#1f2937" stroke="#374151"/><circle cx="106" cy="46" r="5" fill="#6b7280"/><rect x="7" y="55" width="72" height="10" rx="2" fill="#4b5563"/><text x="62" y="89" text-anchor="middle" fill="#1e3a8a" font-size="9.5" font-weight="700" font-family="Arial">A: HDD 3.5 inch</text><text x="62" y="101" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Magnetic spinning platters</text><text x="62" y="112" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Most common in tower PCs</text></g><g transform="translate(162,24)"><rect x="0" y="0" width="94" height="57" rx="3" fill="#1e293b" stroke="#2563eb" stroke-width="1.5"/><rect x="6" y="7" width="82" height="7" rx="2" fill="#0f172a"/><rect x="6" y="18" width="82" height="7" rx="2" fill="#0f172a"/><rect x="6" y="29" width="82" height="7" rx="2" fill="#0f172a"/><rect x="6" y="40" width="40" height="7" rx="2" fill="#0f172a"/><text x="47" y="74" text-anchor="middle" fill="#1e3a8a" font-size="9.5" font-weight="700" font-family="Arial">B: SSD 2.5 inch</text><text x="47" y="86" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Solid state no moving parts</text><text x="47" y="97" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">SATA interface</text></g><g transform="translate(285,24)"><rect x="0" y="0" width="170" height="52" rx="3" fill="#2d2d2d" stroke="#6b7280" stroke-width="1.5"/><rect x="6" y="8" width="116" height="34" rx="2" fill="#1a1a1a"/><circle cx="146" cy="26" r="12" fill="#333" stroke="#555"/><circle cx="146" cy="26" r="4" fill="#555"/><rect x="128" y="38" width="36" height="7" rx="2" fill="#1a1a1a"/><text x="85" y="70" text-anchor="middle" fill="#1e3a8a" font-size="9.5" font-weight="700" font-family="Arial">C: Optical Drive 5.25 inch</text><text x="85" y="82" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">CD / DVD / Blu-ray</text><text x="85" y="93" text-anchor="middle" fill="#64748b" font-size="7.5" font-family="Arial">Front panel access</text></g><rect x="10" y="148" width="460" height="52" rx="5" fill="#eff6ff" stroke="#bfdbfe"/><text x="240" y="164" text-anchor="middle" fill="#1e3a8a" font-size="9" font-weight="700" font-family="Arial">Drive Bay Summary - ITE 8.0 Topic 2.1.4</text><text x="240" y="179" text-anchor="middle" fill="#1e40af" font-size="8" font-family="Arial">3.5 inch (8.9cm) HDD desktop  |  2.5 inch (6.4cm) SSD or laptop HDD</text><text x="240" y="193" text-anchor="middle" fill="#1e40af" font-size="8" font-family="Arial">5.25 inch (13.34cm) front-access bay for Optical drive CD/DVD/Blu-ray</text></svg>`};
-
-const QS=[
-{t:'mcq',b:'Power Supply',q:'A technician is replacing a power supply. Which <strong>two factors</strong> should be considered? <em>(Choose two)</em>',o:['Color and weight','Type of motherboard form factor','Wattage output of the unit','Brand of the CPU','Number and type of power connectors'],a:[1,2],e:'ITE 8.0 Topic 2.1.2.4 — Key PSU factors: motherboard type, wattage, number/type of connectors.'},
-{t:'mcq',b:'Form Factor',q:'What <strong>determines the type of case and power supply</strong> when building a new PC?',o:['The speed of the CPU','The form factor of the motherboard','The maximum RAM capacity','The number of USB ports'],a:[1],e:'ITE 8.0 Topic 2.1.2.3 — The motherboard form factor determines both the case and PSU type.'},
-{t:'mcq',b:'Safety',q:'A technician is about to open a computer case. What is a good safety precaution?',o:['Remove all front panel connections first','Ensure loose clothing stays in contact with the case','Place tape over any sharp edges on the case','Disconnect the monitor before touching anything'],a:[2],e:'ITE 8.0 Topic 2.1.1 — Sharp case edges can cause cuts. Placing tape over them is recommended.'},
-{t:'mcq',b:'CPU Installation',q:'What are <strong>three</strong> important considerations when installing a CPU? <em>(Choose three)</em>',o:['Antistatic precautions are taken','The CMOS battery is removed before installation','The CPU is correctly aligned in the socket','Maximum force is applied to the load lever','The CPU heat sink and fan assembly are correctly installed'],a:[0,2,4],e:'ITE 8.0 Topic 2.1.3.2 — Required: antistatic precautions, correct CPU alignment, proper heatsink/fan.'},
-{t:'mcq',b:'RAM Installation',q:'How can a technician <strong>guarantee RAM is correctly aligned</strong> in the slot?',o:['The label on the module should face the CPU','Arrows on the module align with arrows on the slot','A notch in the module must align with a notch in the slot','Memory slots are colour-coded to match the RAM'],a:[2],e:'ITE 8.0 Topic 2.1.3.4 — The notch on the RAM module must align with the notch in the slot.'},
-{t:'mcq',b:'Expansion Slots',q:'Which expansion slot <strong>sends data one bit at a time</strong> over a serial bus?',o:['PCI','ISA','PCIe','AGP'],a:[2],e:'ITE 8.0 Topic 2.1.3.7 — PCIe uses a serial bus making it much faster than the older parallel PCI.'},
-{t:'mcq',b:'Drive Bays',q:'Which type of drive is installed in a <strong>5.25 inch front-access bay</strong>?',o:['2.5 inch SSD','3.5 inch hard disk drive','USB flash drive','Optical drive (CD/DVD/Blu-ray)'],a:[3],e:'ITE 8.0 Topic 2.1.4.5 — Optical drives are installed in 5.25 inch front-access bays.'},
-{t:'mcq',b:'SATA Form Factors',q:'Choose the <strong>two available SATA hard drive form factors</strong>. <em>(Choose two)</em>',o:['1.8 inch (4.57 cm)','2.5 inch (6.35 cm)','3.5 inch (8.89 cm)','5.25 inch (13.34 cm)'],a:[1,2],e:'ITE 8.0 Topic 2.1.4.3 — Internal SATA HDDs come in 3.5 inch (desktop) and 2.5 inch (laptop) form factors.'},
-{t:'mcq',b:'24-pin Connector',q:'A technician sees a 24-pin connector on the motherboard. What connects through this connector?',o:['CPU fan assembly','GPU (graphics card)','Power supply unit','Front panel buttons'],a:[2],e:'ITE 8.0 Topic 2.1.7.4 — The 24-pin ATX connector provides main power from the PSU to the motherboard.'},
-{t:'mcq',b:'Front Panel',q:'How is <strong>pin 1 identified</strong> on front panel cables?',o:['Pin 1 is always the red wire','Each cable has a small arrow marking pin 1','The first pin is always on the left','Pin 1 cables are physically longer'],a:[1],e:'ITE 8.0 Topic 2.1.7.6 — Each front panel cable has a small arrow to identify pin 1.'},
-{t:'mcq',b:'RAM Compatibility',q:'When upgrading RAM, what must be verified to ensure correct operation?',o:['RAM colour matches the motherboard','RAM is faster than the CPU clock','RAM is compatible with the motherboard and speed is supported by the chipset','RAM has a heatspreader installed'],a:[2],e:'ITE 8.0 Topic 2.1.3.9 — New RAM must be compatible with the motherboard and speed supported by chipset.'},
-{t:'mcq',b:'Power Output',q:'A parts list shows 550W for the power supply. What does <strong>550W</strong> describe?',o:['Input voltage from the wall outlet','Maximum power allowed to the CPU only','Total output power capacity of the PSU','Power consumed by the GPU alone'],a:[2],e:'ITE 8.0 Topic 2.1.2.2 — 550W is the total output power capacity of the power supply unit.'},
-{t:'mcq',b:'SATA Ports',q:'Where on the motherboard are SATA data ports located?',o:['Adjacent to the PCIe x16 slot','Next to the RAM slots','Small connectors grouped together away from other ports','At the rear I/O panel next to USB'],a:[2],e:'ITE 8.0 Topic 2.1.4.2 — SATA ports are small connectors grouped together on the board.'},
-{t:'mcq',b:'Safety Lifting',q:'What are <strong>three safe practices</strong> when lifting heavy PC equipment? <em>(Choose three)</em>',o:['Wear safety goggles','Bend at the knees when lifting','Remove watch and jewellery before lifting','Ensure computer is virus-free','Check area for trip hazards'],a:[1,2,4],e:'ITE 8.0 Topic 2.1.1 — Safe lifting: bend at knees, remove watch/jewellery, check for trip hazards.'},
-{t:'mcq',b:'Video Cards',q:'Video adapter cards commonly use which expansion slot?',o:['PCI (32-bit parallel bus)','ISA (legacy 16-bit)','PCIe x16','PCIe x1'],a:[2],e:'ITE 8.0 Topic 2.1.5.2 — Video adapter cards (GPUs) use the PCIe x16 slot.'},
-{t:'mcq',b:'Media Card Reader',q:'A user needs to read CompactFlash and SD cards. Which device should be installed?',o:['An additional optical drive','A USB hub for extra ports','A media card reader (internal or external USB)','An additional NIC'],a:[2],e:'ITE 8.0 Topic 2.1.6.1 — A media card reader reads/writes memory cards via USB or internal bay.'},
-{t:'mcq',b:'Pre-Case Components',q:'Which <strong>three components</strong> are installed on the motherboard BEFORE placing it in the case? <em>(Choose three)</em>',o:['Power supply unit','CPU (processor)','RAM modules','Hard disk drive','CPU heat sink and fan assembly'],a:[1,2,4],e:'ITE 8.0 Topic 2.1.3 — CPU, RAM, and heatsink/fan are installed on the motherboard before mounting in the case.'},
-{t:'mcq',b:'NIC Upgrade',q:'What are <strong>two reasons</strong> to upgrade a NIC? <em>(Choose two)</em>',o:['To change the card colour','To add wireless (Wi-Fi) connectivity','To increase network bandwidth','To add more USB ports','To support larger screen resolutions'],a:[1,2],e:'ITE 8.0 Topic 2.1.5 — NIC upgrades add wireless capability or increase network bandwidth.'},
-{t:'visual',b:'Visual: PCIe x16 Slot',q:'Which is the <strong>PCIe x16 slot</strong> where video adapter cards are installed?',s:'mb',c:'ITE 8.0 Module 2 Motherboard Diagram (Cisco NetAcad Topic 2.1.5.2)',o:['A - CPU Socket (large area with pin grid)','B - RAM Slots (tall vertical modules)','C - PCIe x16 Slot (long horizontal slot for GPU)','E - SATA Ports (small vertical connectors)'],a:[2],e:'ITE 8.0 Topic 2.1.5.2 — Component C is the PCIe x16 slot for video adapter cards.'},
-{t:'visual',b:'Visual: 24-pin Connector',q:'Which connector provides <strong>main power to the motherboard</strong>?',s:'connectors',c:'ITE 8.0 Module 2 PC Connectors (Cisco NetAcad Topic 2.1.7.4)',o:['A - SATA Data (7-pin thin cable)','B - SATA Power (15-pin wide cable)','C - Molex 4-pin (round holes legacy)','D - 24-pin ATX (large double-row power block)'],a:[3],e:'ITE 8.0 Topic 2.1.7.4 — Connector D is the 24-pin ATX providing main power from PSU to motherboard.'},
-{t:'visual',b:'Visual: 5.25 inch Bay',q:'Which drive is installed in a <strong>5.25 inch front-access bay</strong>?',s:'drives',c:'ITE 8.0 Module 2 Drive Types and Bay Sizes (Cisco NetAcad Topic 2.1.4.5)',o:['A - 3.5 inch HDD (spinning magnetic most common in towers)','B - 2.5 inch SSD (solid state no moving parts)','C - Optical Drive 5.25 inch (CD/DVD front panel access)','None - 5.25 inch bays are no longer used'],a:[2],e:'ITE 8.0 Topic 2.1.4.5 — Optical drives use 5.25 inch front-access bays.'},
-{t:'visual',b:'Visual: SATA Data Cable',q:'Which connector is the <strong>SATA data cable</strong>?',s:'connectors',c:'ITE 8.0 Module 2 SATA data cable vs power cable (Topic 2.1.7.2)',o:['A - SATA Data: thin 7-pin L-shaped cable (data signal)','B - SATA Power: wide 15-pin coloured cable (from PSU)','C - Molex 4-pin round connector (legacy power)','E - 8-pin CPU power connector'],a:[0],e:'ITE 8.0 Topic 2.1.7.2 — SATA data cable (A) is thin 7-pin. SATA power (B) is wider 15-pin.'},
-{t:'hotspot',b:'Hotspot: SATA Ports',q:'Click on the <strong>SATA Ports (label E)</strong> on the motherboard diagram.',s:'mb',z:[{id:'A',x:42,y:32,w:110,h:110,ok:false},{id:'B',x:201,y:19,w:90,h:125,ok:false},{id:'C',x:20,y:175,w:252,h:22,ok:false},{id:'E',x:358,y:32,w:82,h:46,ok:true},{id:'F',x:429,y:141,w:46,h:74,ok:false}],e:'ITE 8.0 Topic 2.1.4.2 — SATA ports (E) are small connectors grouped together.'},
-{t:'hotspot',b:'Hotspot: RAM Slots',q:'Click on the <strong>RAM Slots (label B)</strong> on the motherboard diagram.',s:'mb',z:[{id:'A',x:42,y:32,w:110,h:110,ok:false},{id:'B',x:201,y:19,w:90,h:125,ok:true},{id:'C',x:20,y:175,w:252,h:22,ok:false},{id:'E',x:358,y:32,w:82,h:46,ok:false},{id:'F',x:429,y:141,w:46,h:74,ok:false}],e:'ITE 8.0 Topic 2.1.3.4 — RAM slots (B) — notch on RAM must align with notch in slot.'},
-{t:'hotspot',b:'Hotspot: 24-pin ATX',q:'Click on the <strong>24-pin ATX connector (label F)</strong> on the motherboard diagram.',s:'mb',z:[{id:'A',x:42,y:32,w:110,h:110,ok:false},{id:'B',x:201,y:19,w:90,h:125,ok:false},{id:'C',x:20,y:175,w:252,h:22,ok:false},{id:'E',x:358,y:32,w:82,h:46,ok:false},{id:'F',x:429,y:141,w:46,h:74,ok:true}],e:'ITE 8.0 Topic 2.1.7.4 — The 24-pin ATX connector (F) provides main power from PSU to motherboard.'},
-{t:'hotspot',b:'Hotspot: SATA Data Cable',q:'Click on the <strong>SATA Data cable (connector A)</strong>.',s:'connectors',z:[{id:'A',x:11,y:32,w:84,h:26,ok:true},{id:'B',x:116,y:32,w:118,h:26,ok:false},{id:'C',x:258,y:32,w:80,h:30,ok:false},{id:'D',x:11,y:106,w:148,h:50,ok:false},{id:'E',x:181,y:106,w:106,h:50,ok:false},{id:'F',x:323,y:106,w:160,h:44,ok:false}],e:'ITE 8.0 Topic 2.1.7.2 — Connector A is the thin 7-pin SATA data cable.'},
-{t:'match',b:'Match: Drive Bay Sizes',q:'<strong>Drag</strong> each storage device to its correct bay size.',p:[{l:'3.5 inch (8.9 cm) bay',r:'Hard Disk Drive - most common in tower PCs'},{l:'2.5 inch (6.4 cm) bay',r:'SSD or laptop hard drive'},{l:'5.25 inch (13.3 cm) front bay',r:'Optical drive - CD/DVD/Blu-ray'},{l:'M.2 slot on motherboard',r:'NVMe SSD - no bay needed'}],e:'ITE 8.0 Topic 2.1.4 — HDD=3.5in, SSD=2.5in or M.2, Optical=5.25in front-access.'},
-{t:'match',b:'Match: Power Connectors',q:'<strong>Drag</strong> each connector to its correct function.',p:[{l:'24-pin ATX connector',r:'Main power to the motherboard from PSU'},{l:'8-pin CPU power',r:'Supplemental power to the processor'},{l:'SATA power (15-pin wide)',r:'Powers hard drives and optical drives'},{l:'PCIe 6/8-pin connector',r:'Supplemental power to video cards'}],e:'ITE 8.0 Topic 2.1.7 — 24-pin=motherboard, 8-pin=CPU, SATA power=drives, PCIe=GPU.'},
-{t:'seq',b:'Sequence: PC Assembly Order',q:'<strong>Drag to reorder</strong> these assembly steps into the correct sequence.',steps:['Install CPU, RAM, and heatsink/fan onto the motherboard on the workbench','Mount the power supply into the case and secure with screws','Snap in the I/O shield then mount the motherboard onto the case standoffs','Install storage drives and connect SATA data and power cables','Connect all power cables and front panel headers, then test POST'],correct:[0,1,2,3,4],e:'ITE 8.0 Topic 2.1 — Order: prep motherboard, PSU in case, mount motherboard, install drives, connect and test.'},
-{t:'seq',b:'Sequence: Installing RAM',q:'<strong>Drag to reorder</strong> the correct steps for installing a RAM module.',steps:['Check motherboard documentation to verify RAM type and speed compatibility','Press the retention clips on both ends of the target slot outward','Align the notch on the RAM module with the notch in the slot','Press the module down firmly until the retention clips click into place','Boot and verify BIOS or OS recognises the new RAM'],correct:[0,1,2,3,4],e:'ITE 8.0 Topic 2.1.3.4 — Verify compatibility, prepare slot, align notch, press firmly, verify in BIOS.'},
-{t:'pkt',b:'Practical: DHCP Server',q:'<strong>Task: Design a DHCP Server network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Router configured as a DHCP server<br>- At least 3 PCs obtaining IP address automatically<br>- Verify all PCs receive an IP using ipconfig<br>- Verify connectivity using ping<br><br>Save your file and upload the .pkt file below.',uploadLabel:'Upload your DHCP Server .pkt file'},
-{t:'pkt',b:'Practical: DNS Server',q:'<strong>Task: Design a DNS Server network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Server configured as DNS server<br>- At least 2 computers connected via a switch<br>- Add a DNS record e.g. www.dpu.edu.iq<br>- Verify DNS resolution works from client PCs<br><br>Save your file and upload the .pkt file below.',uploadLabel:'Upload your DNS Server .pkt file'},
-{t:'pkt',b:'Practical: Office Network',q:'<strong>Task: Design a small office network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Switch connecting at least 4 PCs<br>- 1 Router connecting the switch to another network<br>- Assign static IP addresses to all devices<br>- Verify full connectivity using ping<br><br>Save your file and upload the .pkt file below.',uploadLabel:'Upload your office network .pkt file'}
-];
-
-// ── STATE ──────────────────────────────────────────────────────────────────
 var sN='', sI='', tSec=5400, tInt=null, t0=null, submitted=false;
-var A=QS.map(function(){return null;});
 var pktFiles={};
 var _dv='';
 var sDragging={qi:-1,si:-1};
 
-// ── SCREENS ────────────────────────────────────────────────────────────────
+var QS=[
+{t:'mcq',b:'Power Supply',q:'A technician is replacing a power supply. Which <strong>two factors</strong> should be considered? <em>(Choose two)</em>',o:['Color and weight','Type of motherboard form factor','Wattage output of the unit','Brand of the CPU','Number and type of power connectors'],a:[1,2],e:'ITE 8.0 Topic 2.1.2.4'},
+{t:'mcq',b:'Form Factor',q:'What <strong>determines the type of case and power supply</strong> when building a new PC?',o:['The speed of the CPU','The form factor of the motherboard','The maximum RAM capacity','The number of USB ports'],a:[1],e:'ITE 8.0 Topic 2.1.2.3'},
+{t:'mcq',b:'Safety',q:'A technician is about to open a computer case. What is a good safety precaution?',o:['Remove all front panel connections first','Ensure loose clothing stays in contact with the case','Place tape over any sharp edges on the case','Disconnect the monitor before touching anything'],a:[2],e:'ITE 8.0 Topic 2.1.1'},
+{t:'mcq',b:'CPU Installation',q:'What are <strong>three</strong> important considerations when installing a CPU? <em>(Choose three)</em>',o:['Antistatic precautions are taken','The CMOS battery is removed before installation','The CPU is correctly aligned in the socket','Maximum force is applied to the load lever','The CPU heat sink and fan assembly are correctly installed'],a:[0,2,4],e:'ITE 8.0 Topic 2.1.3.2'},
+{t:'mcq',b:'RAM Installation',q:'How can a technician <strong>guarantee RAM is correctly aligned</strong> in the slot?',o:['The label on the module should face the CPU','Arrows on the module align with arrows on the slot','A notch in the module must align with a notch in the slot','Memory slots are colour-coded to match the RAM'],a:[2],e:'ITE 8.0 Topic 2.1.3.4'},
+{t:'mcq',b:'Expansion Slots',q:'Which expansion slot <strong>sends data one bit at a time</strong> over a serial bus?',o:['PCI','ISA','PCIe','AGP'],a:[2],e:'ITE 8.0 Topic 2.1.3.7'},
+{t:'mcq',b:'Drive Bays',q:'Which type of drive is installed in a <strong>5.25 inch front-access bay</strong>?',o:['2.5 inch SSD','3.5 inch hard disk drive','USB flash drive','Optical drive (CD/DVD/Blu-ray)'],a:[3],e:'ITE 8.0 Topic 2.1.4.5'},
+{t:'mcq',b:'SATA Form Factors',q:'Choose the <strong>two available SATA hard drive form factors</strong>. <em>(Choose two)</em>',o:['1.8 inch (4.57 cm)','2.5 inch (6.35 cm)','3.5 inch (8.89 cm)','5.25 inch (13.34 cm)'],a:[1,2],e:'ITE 8.0 Topic 2.1.4.3'},
+{t:'mcq',b:'24-pin Connector',q:'A technician sees a 24-pin connector on the motherboard. What connects through this connector?',o:['CPU fan assembly','GPU (graphics card)','Power supply unit','Front panel buttons'],a:[2],e:'ITE 8.0 Topic 2.1.7.4'},
+{t:'mcq',b:'Front Panel',q:'How is <strong>pin 1 identified</strong> on front panel cables?',o:['Pin 1 is always the red wire','Each cable has a small arrow marking pin 1','The first pin is always on the left','Pin 1 cables are physically longer'],a:[1],e:'ITE 8.0 Topic 2.1.7.6'},
+{t:'mcq',b:'RAM Compatibility',q:'When upgrading RAM, what must be verified to ensure correct operation?',o:['RAM colour matches the motherboard','RAM is faster than the CPU clock','RAM is compatible with the motherboard and speed is supported by the chipset','RAM has a heatspreader installed'],a:[2],e:'ITE 8.0 Topic 2.1.3.9'},
+{t:'mcq',b:'Power Output',q:'A parts list shows 550W for the power supply. What does <strong>550W</strong> describe?',o:['Input voltage from the wall outlet','Maximum power to the CPU only','Total output power capacity of the PSU','Power consumed by the GPU alone'],a:[2],e:'ITE 8.0 Topic 2.1.2.2'},
+{t:'mcq',b:'SATA Ports',q:'Where on the motherboard are SATA data ports located?',o:['Adjacent to the PCIe x16 slot','Next to the RAM slots','Small connectors grouped together away from other ports','At the rear I/O panel next to USB'],a:[2],e:'ITE 8.0 Topic 2.1.4.2'},
+{t:'mcq',b:'Safety Lifting',q:'What are <strong>three safe practices</strong> when lifting heavy PC equipment? <em>(Choose three)</em>',o:['Wear safety goggles','Bend at the knees when lifting','Remove watch and jewellery before lifting','Ensure computer is virus-free','Check area for trip hazards'],a:[1,2,4],e:'ITE 8.0 Topic 2.1.1'},
+{t:'mcq',b:'Video Cards',q:'Video adapter cards commonly use which expansion slot?',o:['PCI (32-bit parallel bus)','ISA (legacy 16-bit)','PCIe x16','PCIe x1'],a:[2],e:'ITE 8.0 Topic 2.1.5.2'},
+{t:'mcq',b:'Media Card Reader',q:'A user needs to read CompactFlash and SD cards. Which device should be installed?',o:['An additional optical drive','A USB hub for extra ports','A media card reader (internal or external USB)','An additional NIC'],a:[2],e:'ITE 8.0 Topic 2.1.6.1'},
+{t:'mcq',b:'Pre-Case Components',q:'Which <strong>three components</strong> are installed on the motherboard BEFORE placing it in the case? <em>(Choose three)</em>',o:['Power supply unit','CPU (processor)','RAM modules','Hard disk drive','CPU heat sink and fan assembly'],a:[1,2,4],e:'ITE 8.0 Topic 2.1.3'},
+{t:'mcq',b:'NIC Upgrade',q:'What are <strong>two reasons</strong> to upgrade a NIC? <em>(Choose two)</em>',o:['To change the card colour','To add wireless (Wi-Fi) connectivity','To increase network bandwidth','To add more USB ports','To support larger screen resolutions'],a:[1,2],e:'ITE 8.0 Topic 2.1.5'},
+{t:'mcq',b:'Motherboard Components',q:'Which component provides the <strong>main clock signal</strong> that synchronises all motherboard components?',o:['The CPU','The chipset','The crystal oscillator','The BIOS chip'],a:[2],e:'ITE 8.0 Topic 2.1.3'},
+{t:'mcq',b:'PSU Connectors',q:'Which connector from the PSU provides <strong>supplemental power to the CPU</strong>?',o:['24-pin ATX connector','4-pin or 8-pin CPU connector','6-pin PCIe connector','Molex 4-pin connector'],a:[1],e:'ITE 8.0 Topic 2.1.7'},
+{t:'mcq',b:'BIOS',q:'What is the purpose of the <strong>BIOS</strong> on a motherboard?',o:['It stores the operating system','It provides the initial startup instructions and hardware checks','It controls the GPU output','It manages RAM allocation'],a:[1],e:'ITE 8.0 Topic 2.1.3'},
+{t:'mcq',b:'Thermal Paste',q:'Why is <strong>thermal paste</strong> applied between the CPU and the heatsink?',o:['To secure the heatsink mechanically','To improve electrical conductivity','To improve heat transfer between CPU and heatsink','To protect the CPU from static electricity'],a:[2],e:'ITE 8.0 Topic 2.1.3.2'},
+{t:'match',b:'Match: Drive Bay Sizes',q:'<strong>Drag</strong> each storage device to its correct bay size.',p:[{l:'3.5 inch (8.9 cm) bay',r:'Hard Disk Drive - most common in tower PCs'},{l:'2.5 inch (6.4 cm) bay',r:'SSD or laptop hard drive'},{l:'5.25 inch (13.3 cm) front bay',r:'Optical drive - CD/DVD/Blu-ray'},{l:'M.2 slot on motherboard',r:'NVMe SSD - no bay needed'}],e:'ITE 8.0 Topic 2.1.4'},
+{t:'match',b:'Match: Power Connectors',q:'<strong>Drag</strong> each connector to its correct function.',p:[{l:'24-pin ATX connector',r:'Main power to the motherboard from PSU'},{l:'8-pin CPU power',r:'Supplemental power to the processor'},{l:'SATA power 15-pin',r:'Powers hard drives and optical drives'},{l:'PCIe 6/8-pin connector',r:'Supplemental power to video cards'}],e:'ITE 8.0 Topic 2.1.7'},
+{t:'seq',b:'Sequence: PC Assembly Order',q:'<strong>Drag to reorder</strong> these assembly steps into the correct sequence.',steps:['Install CPU, RAM, and heatsink onto the motherboard on the workbench','Mount the power supply into the case','Snap in I/O shield then mount the motherboard onto standoffs','Install storage drives and connect SATA cables','Connect all power cables and front panel headers then test POST'],correct:[0,1,2,3,4],e:'ITE 8.0 Topic 2.1'},
+{t:'seq',b:'Sequence: Installing RAM',q:'<strong>Drag to reorder</strong> the correct steps for installing RAM.',steps:['Check motherboard documentation to verify RAM compatibility','Press the retention clips on both ends of the slot outward','Align the notch on the RAM module with the notch in the slot','Press the module down firmly until the clips click into place','Boot and verify BIOS recognises the new RAM'],correct:[0,1,2,3,4],e:'ITE 8.0 Topic 2.1.3.4'},
+{t:'pkt',b:'Practical: DHCP Server',q:'<strong>Design a DHCP Server network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Router configured as DHCP server<br>- At least 3 PCs obtaining IP automatically<br>- Verify using ipconfig and ping<br><br>Upload your .pkt file below.',uploadLabel:'Upload DHCP Server .pkt file'},
+{t:'pkt',b:'Practical: DNS Server',q:'<strong>Design a DNS Server network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Server configured as DNS server<br>- At least 2 computers connected via a switch<br>- Add a DNS record e.g. www.dpu.edu.iq<br>- Verify DNS resolution from client PCs<br><br>Upload your .pkt file below.',uploadLabel:'Upload DNS Server .pkt file'},
+{t:'pkt',b:'Practical: Office Network',q:'<strong>Design a small office network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Switch connecting at least 4 PCs<br>- 1 Router connecting to another network<br>- Assign static IP addresses to all devices<br>- Verify connectivity using ping<br><br>Upload your .pkt file below.',uploadLabel:'Upload Office Network .pkt file'}
+];
 
-
+var A = QS.map(function(){ return null; });
 
 function show(id){
-  document.querySelectorAll('.scr').forEach(function(s){s.classList.remove('on');});
+  var screens = document.querySelectorAll('.scr');
+  for(var i=0;i<screens.length;i++) screens[i].classList.remove('on');
   document.getElementById(id).classList.add('on');
   window.scrollTo(0,0);
 }
 
-// ── LOGIN ──────────────────────────────────────────────────────────────────
 function go(){
-  try {
-    sN=document.getElementById('in').value.trim();
-    sI=document.getElementById('ii').value.trim();
-    if(!sN||!sI){alert('Please enter your full name and student ID.');return;}
-    document.getElementById('dn').textContent=sN;
-    document.getElementById('did').textContent='ID: '+sI;
-    document.getElementById('dn2').textContent=sN;
-    show('se');
-    render();
-    tick();
-    t0=Date.now();
-  } catch(err) {
-    alert('Error starting exam: ' + err.message);
-  }
+  sN = document.getElementById('iname').value.trim();
+  sI = document.getElementById('iid').value.trim();
+  if(!sN || !sI){ alert('Please enter your full name and student ID.'); return; }
+  document.getElementById('dn').textContent = sN;
+  document.getElementById('did').textContent = 'ID: ' + sI;
+  document.getElementById('dn2').textContent = sN;
+  show('se');
+  render();
+  tick();
+  t0 = Date.now();
 }
 
-// ── RENDER QUESTIONS ───────────────────────────────────────────────────────
-var TAGS={mcq:'t1 MCQ',visual:'t2 Visual',hotspot:'t3 Hotspot',match:'t4 Match',seq:'t5 Sequence',pkt:'t4 Practical'};
+var TAGS = {mcq:'t1 MCQ',match:'t4 Match',seq:'t5 Sequence',pkt:'t4 Practical'};
 
 function btag(t){
-  var parts=TAGS[t].split(' ');
-  return '<span class="tag '+parts[0]+'">'+parts[1]+'</span>';
+  var p = TAGS[t] ? TAGS[t].split(' ') : ['t1','Q'];
+  return '<span class="tag '+p[0]+'">'+p[1]+'</span>';
 }
 
 function render(){
-  var w=document.getElementById('qw');
-  w.innerHTML='';
-  QS.forEach(function(q,i){
-    try {
-      var d=document.createElement('div');
-      d.className='qcard';
-      d.id='qc'+i;
-      d.style.animationDelay=(i*0.02)+'s';
-      d.innerHTML=card(q,i);
-      w.appendChild(d);
-    } catch(err) {
-      var d=document.createElement('div');
-      d.className='qcard';
-      d.id='qc'+i;
-      d.innerHTML='<p style="color:red">Q'+(i+1)+' error: '+err.message+'</p>';
-      w.appendChild(d);
-    }
-  });
-  QS.forEach(function(q,i){
-    if(q.t==='seq') try{initSeq(i);}catch(e){}
-    if(q.t==='pkt') try{setupPKT(i);}catch(e){}
-    if(q.t==='match') try{setupMatch(i,q);}catch(e){}
-  });
-  w.addEventListener('click',function(e){
-    var g=e.target.closest ? e.target.closest('.hz') : null;
-    if(!g) return;
-    var qi=parseInt(g.getAttribute('data-qi'));
-    var zid=g.getAttribute('data-zid');
-    pickHS(qi,zid);
-  });
-}
-
-function card(q,i){
-  return '<div class="qhead"><div class="qnum" id="qn'+i+'">'+(i+1)+'</div>'+
-    '<div style="flex:1">'+btag(q.t)+
-    '<span class="tag t1" style="margin-left:.3rem">'+q.b+'</span>'+
-    '<p class="qtext" style="margin-top:.5rem">'+q.q+'</p></div></div>'+
-    body(q,i);
+  var w = document.getElementById('qw');
+  w.innerHTML = '';
+  for(var i=0;i<QS.length;i++){
+    var q = QS[i];
+    var d = document.createElement('div');
+    d.className = 'qcard';
+    d.id = 'qc'+i;
+    d.innerHTML = '<div class="qhead"><div class="qnum" id="qn'+i+'">'+(i+1)+'</div><div style="flex:1">'+btag(q.t)+'<span class="tag t1" style="margin-left:.3rem">'+q.b+'</span><p class="qtext" style="margin-top:.5rem">'+q.q+'</p></div></div>'+body(q,i);
+    w.appendChild(d);
+  }
+  for(var j=0;j<QS.length;j++){
+    if(QS[j].t==='seq') initSeq(j);
+    if(QS[j].t==='pkt') setupPKT(j);
+    if(QS[j].t==='match') setupMatch(j, QS[j]);
+  }
 }
 
 function body(q,i){
   if(q.t==='mcq') return mkO(q,i);
-  if(q.t==='visual') return '<div class="sva">'+SVG[q.s]+'</div><div class="svcap">'+q.c+'</div>'+mkO(q,i);
-  if(q.t==='hotspot') return mkHS(q,i);
-  if(q.t==='match') return mkM(q,i);
+  if(q.t==='match') return mkM(i);
   if(q.t==='seq') return mkS(q,i);
   if(q.t==='pkt') return mkPKT(q,i);
   return '';
 }
 
-// MCQ
 function mkO(q,i){
-  var m=q.a.length>1;
-  var h=m?'<div class="cnote">Choose '+q.a.length+' correct answers</div>':'';
-  h+='<div class="opts">';
-  q.o.forEach(function(o,j){
-    h+='<label class="opt" id="op'+i+'_'+j+'" onclick="pick('+i+','+j+')">'+
-      '<input type="'+(m?'checkbox':'radio')+'" name="q'+i+'" value="'+j+'">'+
-      '<span class="ol">'+String.fromCharCode(97+j)+'.</span>'+
-      '<span class="ot">'+o+'</span></label>';
-  });
-  h+='</div>';
+  var m = q.a.length>1;
+  var h = m ? '<div class="cnote">Choose '+q.a.length+' correct answers</div>' : '';
+  h += '<div class="opts">';
+  for(var j=0;j<q.o.length;j++){
+    h += '<label class="opt" id="op'+i+'_'+j+'" onclick="pick('+i+','+j+')">'
+      +'<input type="'+(m?'checkbox':'radio')+'" name="q'+i+'" value="'+j+'">'
+      +'<span class="ol">'+String.fromCharCode(97+j)+'.</span>'
+      +'<span class="ot">'+q.o[j]+'</span></label>';
+  }
+  h += '</div>';
   return h;
 }
 
-document.addEventListener('click', function(e){
-  var t = e.target;
-  if(t.classList && t.classList.contains('hz') && t.dataset.qi!==undefined){
-    pickHS(parseInt(t.dataset.qi), t.dataset.zid);
+function mkM(i){
+  return '<div class="mwrap"><div><div class="mcolt">Drag These</div><div id="ml'+i+'"></div></div><div><div class="mcolt">Drop Here</div><div id="mr'+i+'"></div></div></div>';
+}
+
+function setupMatch(i, q){
+  var L = document.getElementById('ml'+i);
+  var R = document.getElementById('mr'+i);
+  if(!L||!R) return;
+  var sh = q.p.slice().sort(function(){ return Math.random()-0.5; });
+  for(var k=0;k<sh.length;k++){
+    (function(p){
+      var d = document.createElement('div');
+      d.className = 'ditem';
+      d.draggable = true;
+      d.textContent = p.r;
+      d.addEventListener('dragstart', function(){ _dv = p.r; d.classList.add('dragging'); });
+      d.addEventListener('dragend', function(){ d.classList.remove('dragging'); });
+      L.appendChild(d);
+    })(sh[k]);
   }
-  if(t.classList && t.classList.contains('dzrm') && t.dataset.qi!==undefined){
-    rmD(parseInt(t.dataset.qi), parseInt(t.dataset.pi), t.dataset.lbl);
+  for(var m=0;m<q.p.length;m++){
+    (function(p,pi){
+      var z = document.createElement('div');
+      z.className = 'dzone';
+      z.id = 'dz'+i+'_'+pi;
+      z.innerHTML = '<span class="dzlbl">'+p.l+'</span><span>Drop here...</span>';
+      z.addEventListener('dragover', function(e){ e.preventDefault(); z.classList.add('over'); });
+      z.addEventListener('dragleave', function(){ z.classList.remove('over'); });
+      z.addEventListener('drop', function(e){
+        e.preventDefault();
+        z.classList.remove('over');
+        z.classList.add('fill');
+        z.innerHTML = '<span class="dzlbl">'+p.l+'</span><span style="color:#065f46;font-weight:600">'+_dv+'</span><button class="dzrm" onclick="rmD('+i+','+pi+')">x</button>';
+        if(!Array.isArray(A[i])) A[i] = new Array(QS[i].p.length).fill(null);
+        A[i][pi] = _dv;
+        var done = true;
+        for(var x=0;x<A[i].length;x++) if(A[i][x]===null) done=false;
+        if(done) markDone(i);
+      });
+      R.appendChild(z);
+    })(q.p[m], m);
   }
-});
->
+}
+
+function rmD(qi,pi){
+  var dz = document.getElementById('dz'+qi+'_'+pi);
+  if(!dz) return;
+  dz.classList.remove('fill');
+  dz.innerHTML = '<span class="dzlbl">'+QS[qi].p[pi].l+'</span><span>Drop here...</span>';
+  if(Array.isArray(A[qi])) A[qi][pi] = null;
+  var qc = document.getElementById('qc'+qi);
+  var qn = document.getElementById('qn'+qi);
+  if(qc) qc.classList.remove('done');
+  if(qn) qn.classList.remove('ok');
+  prog();
+}
+
+function mkS(q,i){
+  var h = '<div class="cnote">Drag steps into the correct order</div><div class="seqwrap" id="sw'+i+'">';
+  for(var s=0;s<q.steps.length;s++){
+    h += '<div class="sitem" draggable="true" id="si'+i+'_'+s+'"><span class="snum">'+(s+1)+'</span>'+q.steps[s]+'<span class="shint">drag</span></div>';
+  }
+  h += '</div>';
+  return h;
+}
+
+function initSeq(i){
+  var wrap = document.getElementById('sw'+i);
+  if(!wrap) return;
+  var items = wrap.children;
+  for(var s=0;s<items.length;s++){
+    (function(el, si){
+      el.addEventListener('dragstart', function(){ sDragging={qi:i,si:si}; el.classList.add('dragging'); });
+      el.addEventListener('dragend', function(){ el.classList.remove('dragging'); });
+      el.addEventListener('dragover', function(e){ e.preventDefault(); });
+      el.addEventListener('drop', function(e){
+        e.preventDefault();
+        var from = sDragging.si, to = si;
+        if(sDragging.qi!==i || from===to) return;
+        var w = document.getElementById('sw'+i);
+        var els = Array.from(w.children);
+        var fel = els[from];
+        if(from < to) w.insertBefore(fel, els[to].nextSibling);
+        else w.insertBefore(fel, els[to]);
+        var ns = Array.from(w.children);
+        for(var k=0;k<ns.length;k++) ns[k].querySelector('.snum').textContent = k+1;
+        A[i] = ns.map(function(c){ return parseInt(c.id.split('_')[1]); });
+        markDone(i);
+      });
+    })(items[s], s);
+  }
+}
+
+function mkPKT(q,i){
+  return '<div class="pkt-hint">Complete this task in Cisco Packet Tracer then upload your .pkt file below.</div>'
+    +'<div class="pkt-drop" id="pd'+i+'" onclick="document.getElementById(\'pf'+i+'\').click()">'
+    +'<div style="font-size:1.8rem;margin-bottom:.4rem">&#128194;</div>'
+    +'<div style="font-size:.88rem;color:#64748b">Click to browse or drag your .pkt file here</div>'
+    +'<div style="font-size:.72rem;color:#94a3b8;margin-top:.3rem">'+q.uploadLabel+'</div>'
+    +'</div>'
+    +'<input type="file" id="pf'+i+'" accept=".pkt" style="display:none" onchange="pktSel('+i+',this.files[0])">'
+    +'<div class="pkt-status" id="ps'+i+'"></div>';
+}
+
+function setupPKT(i){
+  var drop = document.getElementById('pd'+i);
+  if(!drop) return;
+  drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.style.borderColor='#2563eb'; });
+  drop.addEventListener('dragleave', function(){ drop.style.borderColor='#cbd5e1'; });
+  drop.addEventListener('drop', function(e){
+    e.preventDefault();
+    drop.style.borderColor='#cbd5e1';
+    pktSel(i, e.dataTransfer.files[0]);
+  });
+}
+
+function pktSel(i, f){
+  if(!f) return;
+  if(!f.name.endsWith('.pkt')){ document.getElementById('ps'+i).textContent='Please select a .pkt file only.'; return; }
+  pktFiles[i] = f;
+  document.getElementById('ps'+i).innerHTML = '<span style="color:#059669;font-weight:600">&#10003; '+f.name+' ready</span>';
+  document.getElementById('pd'+i).style.borderColor = '#86efac';
+  A[i] = 'uploaded';
+  markDone(i);
+}
+
+function pick(qi, oi){
+  var q = QS[qi];
+  var m = q.a.length > 1;
+  if(m){
+    var ch = [];
+    var inputs = document.querySelectorAll('input[name="q'+qi+'"]:checked');
+    for(var k=0;k<inputs.length;k++) ch.push(parseInt(inputs[k].value));
+    A[qi] = ch;
+    for(var j=0;j<q.o.length;j++){
+      var el = document.getElementById('op'+qi+'_'+j);
+      if(el){ if(ch.indexOf(j)>=0) el.classList.add('sel'); else el.classList.remove('sel'); }
+    }
+  } else {
+    A[qi] = [oi];
+    for(var j=0;j<q.o.length;j++){
+      var el = document.getElementById('op'+qi+'_'+j);
+      if(el){ if(j===oi) el.classList.add('sel'); else el.classList.remove('sel'); }
+    }
+  }
+  markDone(qi);
+}
+
+function markDone(qi){
+  var qc = document.getElementById('qc'+qi);
+  var qn = document.getElementById('qn'+qi);
+  if(qc) qc.classList.add('done');
+  if(qn) qn.classList.add('ok');
+  prog();
+}
+
+function prog(){
+  var n = 0;
+  for(var i=0;i<A.length;i++){
+    if(A[i]!==null && (Array.isArray(A[i])?A[i].length>0:true)) n++;
+  }
+  var pf = document.getElementById('pf');
+  if(pf) pf.style.width = (n/QS.length*100)+'%';
+  var pt = document.getElementById('pt');
+  if(pt) pt.textContent = n+' / '+QS.length;
+  var an = document.getElementById('an');
+  if(an) an.textContent = n;
+}
+
+function tick(){
+  var d = document.getElementById('tm');
+  tInt = setInterval(function(){
+    tSec--;
+    var h=Math.floor(tSec/3600), m=Math.floor((tSec%3600)/60), s=tSec%60;
+    if(d) d.textContent = h+':'+('0'+m).slice(-2)+':'+('0'+s).slice(-2);
+    if(d){ d.classList.toggle('warn',tSec<=600&&tSec>180); d.classList.toggle('danger',tSec<=180); }
+    if(tSec<=0){ clearInterval(tInt); sub(true); }
+  }, 1000);
+}
+
+function grade(q, a){
+  if(a===null) return false;
+  if(q.t==='mcq'){
+    var x = Array.isArray(a)?a:[a];
+    if(q.a.length!==x.length) return false;
+    for(var i=0;i<q.a.length;i++) if(x.indexOf(q.a[i])<0) return false;
+    return true;
+  }
+  if(q.t==='match'){
+    if(!Array.isArray(a)) return false;
+    for(var i=0;i<q.p.length;i++) if(a[i]!==q.p[i].r) return false;
+    return true;
+  }
+  if(q.t==='seq'){
+    if(!Array.isArray(a)) return false;
+    for(var i=0;i<q.correct.length;i++) if(a[i]!==q.correct[i]) return false;
+    return true;
+  }
+  if(q.t==='pkt') return a==='uploaded';
+  return false;
+}
+
+function sub(auto){
+  if(submitted) return;
+  var n=0;
+  for(var i=0;i<A.length;i++) if(A[i]!==null) n++;
+  if(!auto && n<QS.length){
+    if(!confirm('You answered '+n+' of '+QS.length+' questions. Submit anyway?')) return;
+  }
+  submitted = true;
+  clearInterval(tInt);
+  var inputs = document.querySelectorAll('input');
+  for(var i=0;i<inputs.length;i++) inputs[i].disabled = true;
+  sendResult();
+}
+
+function sendResult(){
+  var c=0, w=0, sk=0;
+  for(var i=0;i<QS.length;i++){
+    if(A[i]===null||(Array.isArray(A[i])&&A[i].length===0)) sk++;
+    else if(grade(QS[i],A[i])) c++;
+    else w++;
+  }
+  var score = Math.round(c/QS.length*100);
+  var elapsed = Math.round((Date.now()-t0)/1000);
+  var em = Math.floor(elapsed/60), es = elapsed%60;
+  var gl = score>=90?'A+':score>=80?'A':score>=70?'B':score>=60?'C':'F';
+
+  show('sr');
+  var si = document.getElementById('sub-info');
+  var ss = document.getElementById('sub-status');
+  if(si) si.textContent = 'Name: '+sN+' | ID: '+sI;
+  if(ss) ss.textContent = 'Saving...';
+
+  var fd = new FormData();
+  fd.append('name', sN);
+  fd.append('id', sI);
+  fd.append('score', score+'%');
+  fd.append('grade', gl);
+  fd.append('correct', c+' / '+QS.length);
+  fd.append('time', em+'m '+es+'s');
+  fd.append('_subject', 'Exam Result: '+sN+' - '+score+'%');
+
+  var keys = Object.keys(pktFiles);
+  for(var k=0;k<keys.length;k++){
+    fd.append('pkt_file_'+k, pktFiles[keys[k]]);
+  }
+
+  fetch('https://formspree.io/f/xpqnzpww', {method:'POST', body:fd, headers:{Accept:'application/json'}})
+    .then(function(r){ return r.json(); })
+    .then(function(j){
+      if(ss) ss.textContent = j.ok ? 'Submitted to instructor.' : 'Submitted.';
+    })
+    .catch(function(){
+      if(ss) ss.textContent = 'Submitted. Inform instructor if needed.';
+    });
+}
+</script>
+</body>
+</html>
