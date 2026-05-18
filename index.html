@@ -207,10 +207,8 @@ var QS=[
 {t:'match',b:'Match: Power Connectors',q:'<strong>Drag</strong> each connector to its correct function.',p:[{l:'24-pin ATX connector',r:'Main power to the motherboard from PSU'},{l:'8-pin CPU power',r:'Supplemental power to the processor'},{l:'SATA power 15-pin',r:'Powers hard drives and optical drives'},{l:'PCIe 6/8-pin connector',r:'Supplemental power to video cards'}],e:'ITE 8.0 Topic 2.1.7'},
 {t:'seq',b:'Sequence: PC Assembly Order',q:'<strong>Drag to reorder</strong> these assembly steps into the correct sequence.',steps:['Install CPU, RAM, and heatsink onto the motherboard on the workbench','Mount the power supply into the case','Snap in I/O shield then mount the motherboard onto standoffs','Install storage drives and connect SATA cables','Connect all power cables and front panel headers then test POST'],correct:[0,1,2,3,4],e:'ITE 8.0 Topic 2.1'},
 {t:'seq',b:'Sequence: Installing RAM',q:'<strong>Drag to reorder</strong> the correct steps for installing RAM.',steps:['Check motherboard documentation to verify RAM compatibility','Press the retention clips on both ends of the slot outward','Align the notch on the RAM module with the notch in the slot','Press the module down firmly until the clips click into place','Boot and verify BIOS recognises the new RAM'],correct:[0,1,2,3,4],e:'ITE 8.0 Topic 2.1.3.4'},
-{t:'pkt',b:'Practical: DHCP Server',q:'<strong>Design a DHCP Server network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Router configured as DHCP server<br>- At least 3 PCs obtaining IP automatically<br>- Verify using ipconfig and ping<br><br>Upload your .pkt file below.',uploadLabel:'Upload DHCP Server .pkt file'},
-{t:'pkt',b:'Practical: DNS Server',q:'<strong>Design a DNS Server network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Server configured as DNS server<br>- At least 2 computers connected via a switch<br>- Add a DNS record e.g. www.dpu.edu.iq<br>- Verify DNS resolution from client PCs<br><br>Upload your .pkt file below.',uploadLabel:'Upload DNS Server .pkt file'},
-{t:'pkt',b:'Practical: Office Network',q:'<strong>Design a small office network in Cisco Packet Tracer</strong><br><br>Requirements:<br>- 1 Switch connecting at least 4 PCs<br>- 1 Router connecting to another network<br>- Assign static IP addresses to all devices<br>- Verify connectivity using ping<br><br>Upload your .pkt file below.',uploadLabel:'Upload Office Network .pkt file'}
-];
+{t:'pkt',b:'Practical: DHCP Server',q:'<strong>Design a DHCP Server network in Cisco Packet Tracer</strong><br><br>Your design must include:<br>- <strong>1 Switch</strong> connecting at least 3 PCs<br>- Configure DHCP so all PCs obtain IP addresses automatically<br>- Verify using <code>ipconfig</code> that each PC received an IP<br>- Verify connectivity using <code>ping</code>',uploadLabel:'YourFullName_DHCP.pkt'},
+{t:'pkt',b:'Practical: DNS Server',q:'<strong>Design a DNS Server network in Cisco Packet Tracer</strong><br><br>Your design must include:<br>- <strong>1 Server</strong> configured as DNS server<br>- <strong>2 PCs</strong> connected to the server via a switch<br>- Add a DNS record e.g. <code>www.dpu.edu.iq</code><br>- Verify DNS resolution works from both PCs',uploadLabel:'YourFullName_DNS.pkt'}];
 
 var A = QS.map(function(){ return null; });
 
@@ -254,7 +252,7 @@ function render(){
   }
   for(var j=0;j<QS.length;j++){
     if(QS[j].t==='seq') initSeq(j);
-    if(QS[j].t==='pkt') setupPKT(j);
+    
     if(QS[j].t==='match') setupMatch(j, QS[j]);
   }
 }
@@ -375,26 +373,39 @@ function initSeq(i){
 }
 
 function mkPKT(q,i){
-  return '<div class="pkt-hint">Complete this task in Cisco Packet Tracer then upload your .pkt file below.</div>'
-    +'<div class="pkt-drop" id="pd'+i+'" onclick="document.getElementById(\'pf'+i+'\').click()">'
-    +'<div style="font-size:1.8rem;margin-bottom:.4rem">&#128194;</div>'
-    +'<div style="font-size:.88rem;color:#64748b">Click to browse or drag your .pkt file here</div>'
-    +'<div style="font-size:.72rem;color:#94a3b8;margin-top:.3rem">'+q.uploadLabel+'</div>'
-    +'</div>'
-    +'<input type="file" id="pf'+i+'" accept=".pkt" style="display:none" onchange="pktSel('+i+',this.files[0])">'
+  return '<div style="background:#fffbeb;border:1px solid #fde68a;border-radius:8px;padding:.8rem 1rem;margin-bottom:.8rem;font-size:.82rem;color:#92400e">Complete this task in Cisco Packet Tracer and save to the Desktop as instructed below.</div>'
+    +'<div style="background:#f0fdf4;border:1.5px solid #86efac;border-radius:10px;padding:1.2rem 1.4rem">'
+    +'<div style="font-size:.92rem;font-weight:600;color:#065f46;margin-bottom:.6rem">&#128190; How to save your work:</div>'
+    +'<div style="font-size:.88rem;color:#1e293b;line-height:2.2">'
+    +'<strong>1.</strong> On your Desktop create a folder named <code style="background:#d1fae5;padding:1px 6px;border-radius:4px">Exam</code><br>'
+    +'<strong>2.</strong> In Packet Tracer click <strong>File &rarr; Save As</strong><br>'
+    +'<strong>3.</strong> Open the <strong>Exam</strong> folder on the Desktop<br>'
+    +'<strong>4.</strong> Name the file: <code style="background:#d1fae5;padding:1px 6px;border-radius:4px">'+q.uploadLabel+'</code><br>'
+    +'<strong>5.</strong> Click <strong>Save</strong>'
+    +'</div></div>'
+    +'<div style="margin-top:.8rem"><label style="display:flex;align-items:center;gap:.6rem;font-size:.88rem;cursor:pointer;color:#1e3a8a;font-weight:500">'
+    +'<input type="checkbox" id="pktdone'+i+'" onchange="pktCheck('+i+')" style="width:18px;height:18px;accent-color:#1e3a8a">'
+    +'<span>I have saved my file to the Exam folder on the Desktop</span>'
+    +'</label></div>'
     +'<div class="pkt-status" id="ps'+i+'"></div>';
 }
 
-function setupPKT(i){
-  var drop = document.getElementById('pd'+i);
-  if(!drop) return;
-  drop.addEventListener('dragover', function(e){ e.preventDefault(); drop.style.borderColor='#2563eb'; });
-  drop.addEventListener('dragleave', function(){ drop.style.borderColor='#cbd5e1'; });
-  drop.addEventListener('drop', function(e){
-    e.preventDefault();
-    drop.style.borderColor='#cbd5e1';
-    pktSel(i, e.dataTransfer.files[0]);
-  });
+function pktCheck(i){
+  var cb=document.getElementById('pktdone'+i);
+  var ps=document.getElementById('ps'+i);
+  if(cb&&cb.checked){
+    A[i]='confirmed';
+    if(ps) ps.innerHTML='<span style="color:#059669;font-weight:600">&#10003; Saved and confirmed</span>';
+    markDone(i);
+  } else {
+    A[i]=null;
+    if(ps) ps.textContent='';
+    var qc=document.getElementById('qc'+i);
+    var qn=document.getElementById('qn'+i);
+    if(qc) qc.classList.remove('done');
+    if(qn) qn.classList.remove('ok');
+    prog();
+  }
 }
 
 function pktSel(i, f){
@@ -479,7 +490,7 @@ function grade(q, a){
     for(var i=0;i<q.correct.length;i++) if(a[i]!==q.correct[i]) return false;
     return true;
   }
-  if(q.t==='pkt') return a==='uploaded';
+  if(q.t==='pkt') return a==='uploaded'||a==='confirmed';
   return false;
 }
 
